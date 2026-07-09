@@ -1,0 +1,407 @@
+/* Rent Car Hero Banner */
+.rent-hero {
+  padding: 80px 0 50px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.rent-title {
+  font-size: 3.2rem;
+  margin-top: 15px;
+  margin-bottom: 20px;
+  letter-spacing: -1px;
+}
+
+.rent-subtitle {
+  font-size: 1.15rem;
+  max-width: 700px;
+  color: var(--text-secondary);
+  margin-bottom: 40px;
+}
+
+/* Category Tabs switcher */
+.category-tabs {
+  display: flex;
+  padding: 6px;
+  border-radius: var(--radius-full);
+  gap: 4px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.category-btn {
+  padding: 10px 24px;
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  transition: var(--transition-fast);
+}
+
+.category-btn:hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.category-btn.active {
+  color: var(--text-primary);
+  background: var(--bg-tertiary);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Fleet listing section */
+.fleet-section {
+  padding-bottom: 80px;
+}
+
+.fleet-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.car-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: rgba(17, 19, 30, 0.55);
+}
+
+.car-image-wrapper {
+  position: relative;
+  height: 200px;
+  background: #0f1016;
+  overflow: hidden;
+}
+
+.car-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.car-card:hover .car-image {
+  transform: scale(1.08);
+}
+
+.car-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(10, 11, 16, 0) 60%, rgba(10, 11, 16, 0.6));
+}
+
+.car-rating-badge {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: rgba(10, 11, 16, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  backdrop-filter: blur(4px);
+}
+
+.car-body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  text-align: left;
+}
+
+.car-name {
+  font-size: 1.3rem;
+  margin-bottom: 16px;
+  letter-spacing: -0.3px;
+}
+
+.car-specs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.car-spec-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+}
+
+.spec-icon {
+  color: var(--accent-secondary);
+  opacity: 0.8;
+}
+
+.car-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 16px;
+}
+
+.car-price-block {
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+}
+
+.car-price {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.price-unit {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* Value Props Grid */
+.props-section {
+  padding: 60px 0 80px;
+}
+
+.props-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.prop-card {
+  padding: 35px 25px;
+  text-align: left;
+  border-radius: var(--radius-lg);
+}
+
+.prop-icon {
+  width: 48px;
+  height: 48px;
+  padding: 10px;
+  border-radius: var(--radius-md);
+  margin-bottom: 20px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--glass-border);
+}
+
+.prop-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.prop-card p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.color-indigo { color: var(--accent-primary); border-color: rgba(99, 102, 241, 0.3) !important; background: rgba(99, 102, 241, 0.1) !important; }
+.color-purple { color: var(--accent-secondary); border-color: rgba(168, 85, 247, 0.3) !important; background: rgba(168, 85, 247, 0.1) !important; }
+.color-pink { color: var(--accent-tertiary); border-color: rgba(236, 72, 153, 0.3) !important; background: rgba(236, 72, 153, 0.1) !important; }
+
+/* Rent Car Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(5, 5, 8, 0.8);
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.modal-content {
+  width: 100%;
+  max-width: 580px;
+  padding: 40px;
+  position: relative;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: var(--bg-secondary);
+  box-shadow: var(--shadow-lg), 0 0 50px rgba(99, 102, 241, 0.15);
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: var(--text-secondary);
+  padding: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.04);
+  transition: var(--transition-fast);
+}
+
+.modal-close-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-primary);
+}
+
+.modal-header {
+  text-align: left;
+  margin-bottom: 24px;
+}
+
+.modal-title {
+  font-size: 1.75rem;
+  margin-bottom: 6px;
+}
+
+.modal-subtitle {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-row {
+  display: flex;
+  gap: 16px;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.input-with-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-icon {
+  position: absolute;
+  left: 14px;
+  color: var(--text-muted);
+}
+
+.input-with-icon .form-control {
+  padding-left: 44px;
+}
+
+.checkbox-group {
+  padding: 16px;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.checkbox-label input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  border: 1px solid var(--glass-border);
+  margin-top: 3px;
+  accent-color: var(--accent-primary);
+}
+
+.checkbox-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.checkbox-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.checkbox-desc {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* Price Calculation Widget */
+.price-calc-widget {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  border: 1px solid var(--glass-border);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.calc-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.calc-row.divider {
+  height: 1px;
+  background: var(--glass-border);
+  margin: 4px 0;
+}
+
+.calc-row.total-row {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.w-full {
+  width: 100%;
+}
+
+.submit-booking-btn {
+  height: 52px;
+  margin-top: 10px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .rent-title {
+    font-size: 2.5rem;
+  }
+  .form-row {
+    flex-direction: column;
+    gap: 16px;
+  }
+  .modal-content {
+    padding: 24px;
+  }
+}
+@media (max-width: 500px) {
+  .category-tabs {
+    flex-direction: column;
+    border-radius: var(--radius-lg);
+    width: 100%;
+  }
+  .category-btn {
+    border-radius: var(--radius-md);
+    width: 100%;
+  }
+}
