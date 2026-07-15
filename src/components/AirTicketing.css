@@ -1,10 +1,16 @@
 /* Ticketing Hero Banner */
 .ticketing-hero {
-  padding: 80px 0 50px;
-  text-align: center;
+  position: relative;
+  min-height: 520px;
   display: flex;
-  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  padding: 100px 0 80px;
+  background-image: linear-gradient(rgba(15, 23, 42, 0.35), rgba(15, 23, 42, 0.65)), 
+                    url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1920&q=80');
+  background-size: cover;
+  background-position: center;
+  text-align: center;
 }
 
 .ticketing-title {
@@ -12,13 +18,16 @@
   margin-top: 15px;
   margin-bottom: 20px;
   letter-spacing: -1px;
+  color: #ffffff;
+  text-shadow: 0 2px 10px rgba(15, 23, 42, 0.4);
 }
 
 .ticketing-subtitle {
   font-size: 1.15rem;
   max-width: 700px;
-  color: var(--text-secondary);
+  color: rgba(255, 255, 255, 0.95);
   margin-bottom: 40px;
+  text-shadow: 0 1px 5px rgba(15, 23, 42, 0.4);
 }
 
 /* Flight Console Panel */
@@ -26,9 +35,9 @@
   width: 100%;
   max-width: 1000px;
   padding: 30px;
-  background: rgba(17, 19, 30, 0.85);
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 10px 40px rgba(15, 23, 42, 0.06);
+  border: 1px solid var(--glass-border);
   border-radius: var(--radius-lg);
   display: flex;
   flex-direction: column;
@@ -39,13 +48,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid var(--glass-border);
   padding-bottom: 15px;
 }
 
 .trip-toggle {
   display: flex;
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(15, 23, 42, 0.04);
   padding: 4px;
   border-radius: var(--radius-full);
   gap: 2px;
@@ -63,7 +72,7 @@
 .trip-toggle .toggle-btn.active {
   color: var(--text-primary);
   background: var(--bg-tertiary);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(15, 23, 42, 0.08);
 }
 
 .cabin-select-wrapper {
@@ -72,7 +81,7 @@
 
 .cabin-select {
   padding: 8px 28px 8px 16px;
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(15, 23, 42, 0.03);
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-md);
   color: var(--text-primary);
@@ -107,7 +116,7 @@
   display: flex;
   align-items: center;
   flex: 1;
-  background: rgba(255, 255, 255, 0.02);
+  background: rgba(15, 23, 42, 0.02);
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-md);
   height: 54px;
@@ -213,7 +222,7 @@
   justify-content: space-between;
   padding: 24px 30px;
   border-radius: var(--radius-md);
-  background: rgba(17, 19, 30, 0.45);
+  background: var(--glass-bg);
   gap: 24px;
 }
 
@@ -395,7 +404,7 @@
 
 /* Flight Booking checkout summary in Modal */
 .ticket-summary {
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(15, 23, 42, 0.03);
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-md);
   padding: 20px;

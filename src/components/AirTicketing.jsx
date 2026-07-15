@@ -112,13 +112,15 @@ export default function AirTicketing() {
   return (
     <div className="air-ticketing-screen animate-fadeIn">
       {/* Search Header Banner */}
-      <section className="ticketing-hero container">
-        <span className="badge badge-pink">Global Airways Portal</span>
-        <h1 className="ticketing-title">Seamless Flights. <br /><span className="text-gradient">Unlimited Sky.</span></h1>
-        <p className="ticketing-subtitle">Compare and book airline tickets across 500+ commercial carriers instantly. Best price guarantee, 24/7 flight support, and easy upgrades.</p>
-        
-        {/* Ticket Search Console */}
-        <form onSubmit={handleSearchSubmit} className="flight-console-panel glass-panel">
+      <section className="ticketing-hero">
+        <div className="hero-overlay" />
+        <div className="hero-content container">
+          <span className="badge badge-pink">Global Airways Portal</span>
+          <h1 className="ticketing-title">Seamless Flights. <br /><span className="text-gradient">Unlimited Sky.</span></h1>
+          <p className="ticketing-subtitle">Compare and book airline tickets across 500+ commercial carriers instantly. Best price guarantee, 24/7 flight support, and easy upgrades.</p>
+          
+          {/* Ticket Search Console */}
+          <form onSubmit={handleSearchSubmit} className="flight-console-panel glass-panel">
           <div className="console-row-top">
             <div className="trip-toggle">
               <button 
@@ -223,7 +225,8 @@ export default function AirTicketing() {
             <span>Search Flights</span>
           </button>
         </form>
-      </section>
+      </div>
+    </section>
 
       {/* Flight Search Results */}
       <section className="flight-results container">

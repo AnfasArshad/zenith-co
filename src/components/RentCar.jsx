@@ -119,22 +119,25 @@ export default function RentCar() {
   return (
     <div className="rent-car-screen animate-fadeIn">
       {/* Intro Header */}
-      <section className="rent-hero container">
-        <span className="badge badge-purple">Elite Mobility</span>
-        <h1 className="rent-title">Premium Fleet. <br /><span className="text-gradient">Unlimited Journeys.</span></h1>
-        <p className="rent-subtitle">Experience the thrill of driving the world's finest vehicles. Seamless booking, door-to-door delivery, and full comprehensive coverage.</p>
-        
-        {/* Category Switcher */}
-        <div className="category-tabs glass-panel">
-          {categories.map((cat) => (
-            <button
-              key={cat.id}
-              onClick={() => setSelectedCategory(cat.id)}
-              className={`category-btn ${selectedCategory === cat.id ? 'active' : ''}`}
-            >
-              <span>{cat.label}</span>
-            </button>
-          ))}
+      <section className="rent-hero">
+        <div className="hero-overlay" />
+        <div className="hero-content container">
+          <span className="badge badge-purple">Elite Mobility</span>
+          <h1 className="rent-title">Premium Fleet. <br /><span className="text-gradient">Unlimited Journeys.</span></h1>
+          <p className="rent-subtitle">Experience the thrill of driving the world's finest vehicles. Seamless booking, door-to-door delivery, and full comprehensive coverage.</p>
+          
+          {/* Category Switcher */}
+          <div className="category-tabs glass-panel">
+            {categories.map((cat) => (
+              <button
+                key={cat.id}
+                onClick={() => setSelectedCategory(cat.id)}
+                className={`category-btn ${selectedCategory === cat.id ? 'active' : ''}`}
+              >
+                <span>{cat.label}</span>
+              </button>
+            ))}
+          </div>
         </div>
       </section>
 

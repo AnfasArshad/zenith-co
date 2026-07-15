@@ -1,10 +1,16 @@
 /* Rent Car Hero Banner */
 .rent-hero {
-  padding: 80px 0 50px;
-  text-align: center;
+  position: relative;
+  min-height: 520px;
   display: flex;
-  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  padding: 100px 0 80px;
+  background-image: linear-gradient(rgba(15, 23, 42, 0.35), rgba(15, 23, 42, 0.65)), 
+                    url('https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1920&q=80');
+  background-size: cover;
+  background-position: center;
+  text-align: center;
 }
 
 .rent-title {
@@ -12,13 +18,16 @@
   margin-top: 15px;
   margin-bottom: 20px;
   letter-spacing: -1px;
+  color: #ffffff;
+  text-shadow: 0 2px 10px rgba(15, 23, 42, 0.4);
 }
 
 .rent-subtitle {
   font-size: 1.15rem;
   max-width: 700px;
-  color: var(--text-secondary);
+  color: rgba(255, 255, 255, 0.95);
   margin-bottom: 40px;
+  text-shadow: 0 1px 5px rgba(15, 23, 42, 0.4);
 }
 
 /* Category Tabs switcher */
@@ -27,7 +36,7 @@
   padding: 6px;
   border-radius: var(--radius-full);
   gap: 4px;
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(15, 23, 42, 0.04);
 }
 
 .category-btn {
@@ -40,14 +49,14 @@
 }
 
 .category-btn:hover {
-  color: var(--text-primary);
-  background: rgba(255, 255, 255, 0.04);
+  color: var(--accent-primary);
+  background: rgba(15, 23, 42, 0.04);
 }
 
 .category-btn.active {
   color: var(--text-primary);
   background: var(--bg-tertiary);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(15, 23, 42, 0.08);
   box-shadow: var(--shadow-sm);
 }
 
@@ -67,13 +76,13 @@
   flex-direction: column;
   border-radius: var(--radius-lg);
   overflow: hidden;
-  background: rgba(17, 19, 30, 0.55);
+  background: var(--glass-bg);
 }
 
 .car-image-wrapper {
   position: relative;
   height: 200px;
-  background: #0f1016;
+  background: #eef2f6;
   overflow: hidden;
 }
 
@@ -94,15 +103,15 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to bottom, rgba(10, 11, 16, 0) 60%, rgba(10, 11, 16, 0.6));
+  background: linear-gradient(to bottom, rgba(15, 23, 42, 0) 60%, rgba(15, 23, 42, 0.35));
 }
 
 .car-rating-badge {
   position: absolute;
   top: 15px;
   left: 15px;
-  background: rgba(10, 11, 16, 0.85);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--glass-border);
   padding: 4px 10px;
   border-radius: var(--radius-full);
   font-size: 0.75rem;
@@ -150,7 +159,7 @@
   justify-content: space-between;
   align-items: center;
   margin-top: auto;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-top: 1px solid var(--glass-border);
   padding-top: 16px;
 }
 
@@ -220,7 +229,7 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(5, 5, 8, 0.8);
+  background: rgba(15, 23, 42, 0.45);
   backdrop-filter: blur(8px);
   z-index: 1000;
   display: flex;
@@ -252,7 +261,7 @@
 }
 
 .modal-close-btn:hover {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(15, 23, 42, 0.08);
   color: var(--text-primary);
 }
 
@@ -305,7 +314,7 @@
 .checkbox-group {
   padding: 16px;
   border-radius: var(--radius-md);
-  background: rgba(255, 255, 255, 0.02);
+  background: rgba(15, 23, 42, 0.02);
 }
 
 .checkbox-label {
@@ -344,7 +353,7 @@
 
 /* Price Calculation Widget */
 .price-calc-widget {
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(15, 23, 42, 0.03);
   border-radius: var(--radius-md);
   padding: 20px;
   border: 1px solid var(--glass-border);

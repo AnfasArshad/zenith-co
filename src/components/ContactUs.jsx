@@ -91,14 +91,19 @@ export default function ContactUs() {
   };
 
   return (
-    <div className="contact-screen animate-fadeIn container section">
-      <div className="text-center contact-header">
-        <span className="badge badge-indigo">Connect With Us</span>
-        <h1 className="contact-title">Let's Plan Your <span className="text-gradient">Next Chapter</span></h1>
-        <p className="contact-subtitle">Have questions about our travel packages, car fleet, or flight details? Send us an inquiry and our desk will contact you immediately.</p>
-      </div>
+    <div className="contact-screen animate-fadeIn">
+      {/* Intro Header Banner */}
+      <section className="contact-hero-banner">
+        <div className="hero-overlay" />
+        <div className="hero-content container">
+          <span className="badge badge-indigo">Connect With Us</span>
+          <h1 className="contact-title">Let's Plan Your <span className="text-gradient">Next Chapter</span></h1>
+          <p className="contact-subtitle">Have questions about our travel packages, car fleet, or flight details? Send us an inquiry and our desk will contact you immediately.</p>
+        </div>
+      </section>
 
-      <div className="contact-grid">
+      <div className="contact-content-wrapper container">
+        <div className="contact-grid">
         {/* Contact Details Card */}
         <div className="contact-info-panel glass-panel">
           <h2>Contact Info</h2>
@@ -338,6 +343,7 @@ export default function ContactUs() {
           </div>
         </div>
       )}
+      </div>
     </div>
   );
 }
