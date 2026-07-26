@@ -5,9 +5,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 80px 0;
-  background-image: linear-gradient(rgba(240, 244, 248, 0.15), rgba(240, 244, 248, 0.65)), 
-                    url('https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=1920&q=80');
+  padding: 80px 20px;
+  /* Added horizontal padding */
+  background-image: linear-gradient(rgba(15, 23, 42, 0.35), rgba(15, 23, 42, 0.65)),
+    url('https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=1920&q=80');
   background-size: cover;
   background-position: center;
   text-align: center;
@@ -15,39 +16,63 @@
 }
 
 .contact-content-wrapper {
-  padding-top: 20px;
-  padding-bottom: 80px;
+  padding: 20px 16px 80px;
+  /* Added consistent padding */
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
 }
 
 .contact-title {
-  font-size: 3.2rem;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  /* Responsive font size */
   margin-top: 15px;
   margin-bottom: 20px;
   letter-spacing: -1px;
+  color: #ffffff;
+  text-shadow: 0 2px 10px rgba(15, 23, 42, 0.4);
+  word-wrap: break-word;
 }
 
 .contact-subtitle {
-  font-size: 1.15rem;
+  font-size: clamp(0.95rem, 2vw, 1.15rem);
   max-width: 700px;
-  color: var(--text-secondary);
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 1px 5px rgba(15, 23, 42, 0.4);
+  padding: 0 10px;
+  margin: 0 auto;
+}
+
+/* Form row - IMPROVED */
+.form-row {
+  display: flex;
+  gap: 20px;
+  width: 100%;
 }
 
 .contact-grid {
   display: grid;
   grid-template-columns: 1fr 1.5fr;
-  gap: 40px;
+  gap: 30px;
   text-align: left;
+  width: 100%;
 }
 
-.contact-info-panel, .contact-form-panel {
-  padding: 40px;
+.contact-info-panel,
+.contact-form-panel {
+  padding: clamp(20px, 4vw, 40px);
   display: flex;
   flex-direction: column;
+  width: 100%;
+  box-sizing: border-box;
+  /* Important for padding calculations */
 }
 
-.contact-info-panel h2, .contact-form-panel h2 {
-  font-size: 1.8rem;
+.contact-info-panel h2,
+.contact-form-panel h2 {
+  font-size: clamp(1.5rem, 3vw, 1.8rem);
   margin-bottom: 8px;
+  word-wrap: break-word;
 }
 
 .panel-desc {
@@ -67,7 +92,7 @@
 .info-item {
   display: flex;
   align-items: flex-start;
-  gap: 20px;
+  gap: 16px;
 }
 
 .info-icon-wrapper {
@@ -75,6 +100,8 @@
   border: 1px solid rgba(99, 102, 241, 0.2);
   color: var(--accent-primary);
   width: 48px;
+  min-width: 48px;
+  /* Prevent shrinking */
   height: 48px;
   border-radius: var(--radius-md);
   display: flex;
@@ -85,21 +112,23 @@
 }
 
 .info-item h4 {
-  font-size: 1.05rem;
+  font-size: clamp(0.95rem, 2vw, 1.05rem);
   color: var(--text-primary);
   margin-bottom: 4px;
+  word-wrap: break-word;
 }
 
 .info-item p {
   font-size: 0.9rem;
   color: var(--text-secondary);
   line-height: 1.5;
+  word-wrap: break-word;
 }
 
 /* Owner Configuration Dashboard */
 .owner-config {
   margin-top: auto;
-  padding: 24px;
+  padding: clamp(16px, 3vw, 24px);
   background: rgba(15, 23, 42, 0.03);
   border-radius: var(--radius-md);
 }
@@ -108,6 +137,7 @@
   font-size: 0.95rem;
   color: var(--text-primary);
   margin-bottom: 6px;
+  word-wrap: break-word;
 }
 
 .owner-config p {
@@ -132,6 +162,7 @@
   font-weight: 700;
   text-transform: uppercase;
   color: var(--text-secondary);
+  word-wrap: break-word;
 }
 
 .config-form-group input {
@@ -142,6 +173,7 @@
   color: var(--text-primary);
   font-size: 0.85rem;
   width: 100%;
+  box-sizing: border-box;
 }
 
 .config-form-group input:focus {
@@ -154,6 +186,42 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+  width: 100%;
+}
+
+.form-group {
+  width: 100%;
+}
+
+.form-group.flex-1 {
+  flex: 1;
+  min-width: 0;
+  /* Prevents overflow */
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 4px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-sm);
+  background: rgba(15, 23, 42, 0.03);
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+  background: rgba(15, 23, 42, 0.05);
 }
 
 .textarea-control {
@@ -165,6 +233,11 @@
   height: 52px;
   margin-top: 10px;
   font-size: 1rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 
 .spinner-sm {
@@ -177,8 +250,35 @@
 }
 
 /* Success modal custom components */
-.success-modal {
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
   max-width: 520px;
+  width: 100%;
+  padding: clamp(24px, 5vw, 40px);
+  background: var(--bg-primary);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.success-modal {
+  text-align: center;
 }
 
 .success-icon-wrapper {
@@ -197,18 +297,34 @@
 }
 
 @keyframes pulse-success {
-  0% { box-shadow: 0 0 0 0px rgba(16, 185, 129, 0.4); }
-  70% { box-shadow: 0 0 0 15px rgba(16, 185, 129, 0); }
-  100% { box-shadow: 0 0 0 0px rgba(16, 185, 129, 0); }
+  0% {
+    box-shadow: 0 0 0 0px rgba(16, 185, 129, 0.4);
+  }
+
+  70% {
+    box-shadow: 0 0 0 15px rgba(16, 185, 129, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0px rgba(16, 185, 129, 0);
+  }
 }
 
-.success-icon {
-  width: 40px;
-  height: 40px;
+.modal-title {
+  font-size: clamp(1.5rem, 3vw, 1.8rem);
+  margin-bottom: 12px;
+  color: var(--text-primary);
+}
+
+.modal-subtitle {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+  word-wrap: break-word;
 }
 
 .notification-options {
-  padding: 24px;
+  padding: clamp(16px, 3vw, 24px);
   background: rgba(15, 23, 42, 0.02);
   border-radius: var(--radius-md);
   margin: 24px 0 30px;
@@ -226,6 +342,11 @@
   gap: 12px;
   justify-content: center;
   flex-wrap: wrap;
+}
+
+.modal-actions-row .btn {
+  flex: 1;
+  min-width: 140px;
 }
 
 .whatsapp-btn {
@@ -247,32 +368,10 @@
   height: 48px;
 }
 
-/* Responsive queries */
-@media (max-width: 960px) {
-  .contact-grid {
-    grid-template-columns: 1fr;
-    gap: 30px;
-  }
-  .contact-info-panel, .contact-form-panel {
-    padding: 30px;
-  }
-}
-@media (max-width: 600px) {
-  .contact-title {
-    font-size: 2.5rem;
-  }
-  .modal-actions-row {
-    flex-direction: column;
-    align-items: stretch;
-  }
-  .modal-actions-row .btn {
-    width: 100%;
-  }
-}
-
-/* Custom Dropdown Styling */
+/* Custom Dropdown Styling - IMPROVED */
 .custom-dropdown-group {
   position: relative;
+  width: 100%;
 }
 
 .custom-dropdown-container {
@@ -289,16 +388,24 @@
   background: rgba(15, 23, 42, 0.03);
   border: 1px solid var(--glass-border);
   width: 100%;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
+  padding: 10px 14px;
+  font-size: 0.95rem;
+  border-radius: var(--radius-sm);
+  gap: 8px;
+  min-height: 44px;
 }
 
 .custom-dropdown-trigger span {
-  text-overflow: ellipsis;
+  flex: 1;
+  word-wrap: break-word;
   overflow: hidden;
-  white-space: nowrap;
-  padding-right: 12px;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  line-clamp: 2;
+  /* Standard property for compatibility */
+  white-space: normal;
 }
 
 .dropdown-chevron {
@@ -327,11 +434,20 @@
   flex-direction: column;
   gap: 4px;
   animation: slideDown 0.2s ease forwards;
+  max-height: 300px;
+  overflow-y: auto;
 }
 
 @keyframes slideDown {
-  from { opacity: 0; transform: translateY(-8px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .custom-dropdown-item {
@@ -342,7 +458,12 @@
   transition: var(--transition-fast);
   font-size: 0.92rem;
   width: 100%;
-  white-space: normal; /* allow wrapping on mobile! */
+  white-space: normal;
+  /* Allow wrapping */
+  word-wrap: break-word;
+  background: transparent;
+  border: none;
+  cursor: pointer;
 }
 
 .custom-dropdown-item:hover {
@@ -357,3 +478,202 @@
   font-weight: 600;
 }
 
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ===== RESPONSIVE QUERIES ===== */
+
+/* Tablet and smaller */
+@media (max-width: 960px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .contact-info-panel,
+  .contact-form-panel {
+    padding: 24px;
+  }
+
+  .form-row {
+    gap: 16px;
+  }
+}
+
+/* Mobile devices */
+@media (max-width: 768px) {
+  .contact-hero-banner {
+    min-height: 350px;
+    padding: 60px 16px;
+  }
+
+  .contact-content-wrapper {
+    padding: 16px 12px 60px;
+  }
+
+  .contact-title {
+    font-size: 2rem;
+  }
+
+  .contact-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .form-row {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .contact-info-panel,
+  .contact-form-panel {
+    padding: 20px 16px;
+  }
+
+  .contact-grid {
+    gap: 20px;
+  }
+
+  .info-item {
+    gap: 12px;
+  }
+
+  .info-icon-wrapper {
+    width: 40px;
+    min-width: 40px;
+    height: 40px;
+  }
+
+  .info-icon-wrapper svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  /* Modal fixes for mobile */
+  .modal-content {
+    padding: 24px 16px;
+    margin: 10px;
+  }
+
+  .modal-actions-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .modal-actions-row .btn {
+    width: 100%;
+    min-width: unset;
+  }
+
+  .success-icon-wrapper {
+    width: 64px;
+    height: 64px;
+  }
+
+  .success-icon-wrapper svg {
+    width: 32px;
+    height: 32px;
+  }
+
+  /* Dropdown fixes for mobile */
+  .custom-dropdown-trigger {
+    font-size: 0.9rem;
+    padding: 10px 12px;
+    min-height: 40px;
+  }
+
+  .custom-dropdown-trigger span {
+    font-size: 0.85rem;
+  }
+
+  .custom-dropdown-item {
+    font-size: 0.85rem;
+    padding: 10px 14px;
+  }
+
+  /* Owner config fixes */
+  .owner-config {
+    padding: 16px;
+  }
+
+  .config-form-group input {
+    font-size: 0.9rem;
+    /* Larger for touch targets */
+    padding: 10px 12px;
+  }
+
+  /* Form input fixes for better touch targets */
+  .form-control {
+    font-size: 16px;
+    /* Prevents zoom on iOS */
+    padding: 12px 14px;
+  }
+
+  .submit-inquiry-btn {
+    height: 48px;
+    font-size: 0.95rem;
+  }
+}
+
+/* Very small devices */
+@media (max-width: 480px) {
+  .contact-hero-banner {
+    min-height: 280px;
+    padding: 40px 12px;
+  }
+
+  .contact-title {
+    font-size: 1.6rem;
+  }
+
+  .contact-subtitle {
+    font-size: 0.85rem;
+  }
+
+  .contact-info-panel h2,
+  .contact-form-panel h2 {
+    font-size: 1.3rem;
+  }
+
+  .panel-desc {
+    font-size: 0.85rem;
+  }
+
+  .info-item h4 {
+    font-size: 0.9rem;
+  }
+
+  .info-item p {
+    font-size: 0.8rem;
+  }
+
+  .modal-title {
+    font-size: 1.3rem;
+  }
+
+  .modal-subtitle {
+    font-size: 0.85rem;
+  }
+
+  .notif-explain {
+    font-size: 0.82rem;
+  }
+
+  .btn {
+    font-size: 0.85rem;
+    padding: 10px 16px;
+  }
+}
