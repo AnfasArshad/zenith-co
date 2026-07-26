@@ -1,4 +1,4 @@
-/* Contact page grid and spacing */
+/* Contact Hero Banner - Matching Travels Page */
 .contact-hero-banner {
   position: relative;
   min-height: 480px;
@@ -6,7 +6,6 @@
   align-items: center;
   justify-content: center;
   padding: 80px 20px;
-  /* Added horizontal padding */
   background-image: linear-gradient(rgba(15, 23, 42, 0.35), rgba(15, 23, 42, 0.65)),
     url('https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=1920&q=80');
   background-size: cover;
@@ -15,26 +14,40 @@
   margin-bottom: 20px;
 }
 
-.contact-content-wrapper {
-  padding: 20px 16px 80px;
-  /* Added consistent padding */
-  max-width: 1200px;
-  margin: 0 auto;
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, transparent 30%, var(--bg-primary) 90%);
+  pointer-events: none;
 }
 
-.contact-title {
+.hero-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 800px;
+}
+
+.hero-badge {
+  margin-bottom: 20px;
+}
+
+.hero-title {
   font-size: clamp(2rem, 5vw, 3.2rem);
-  /* Responsive font size */
   margin-top: 15px;
   margin-bottom: 20px;
   letter-spacing: -1px;
   color: #ffffff;
   text-shadow: 0 2px 10px rgba(15, 23, 42, 0.4);
-  word-wrap: break-word;
+  line-height: 1.15;
 }
 
-.contact-subtitle {
+.hero-subtitle {
   font-size: clamp(0.95rem, 2vw, 1.15rem);
   max-width: 700px;
   color: rgba(255, 255, 255, 0.95);
@@ -43,13 +56,15 @@
   margin: 0 auto;
 }
 
-/* Form row - IMPROVED */
-.form-row {
-  display: flex;
-  gap: 20px;
+/* Contact Content Wrapper */
+.contact-content-wrapper {
+  padding: 20px 16px 80px;
+  max-width: 1200px;
+  margin: 0 auto;
   width: 100%;
 }
 
+/* Contact Grid */
 .contact-grid {
   display: grid;
   grid-template-columns: 1fr 1.5fr;
@@ -58,6 +73,7 @@
   width: 100%;
 }
 
+/* Panels */
 .contact-info-panel,
 .contact-form-panel {
   padding: clamp(20px, 4vw, 40px);
@@ -65,14 +81,14 @@
   flex-direction: column;
   width: 100%;
   box-sizing: border-box;
-  /* Important for padding calculations */
+  background: var(--glass-bg);
+  border-radius: var(--radius-lg);
 }
 
-.contact-info-panel h2,
-.contact-form-panel h2 {
+.section-title {
   font-size: clamp(1.5rem, 3vw, 1.8rem);
   margin-bottom: 8px;
-  word-wrap: break-word;
+  letter-spacing: -0.5px;
 }
 
 .panel-desc {
@@ -101,7 +117,6 @@
   color: var(--accent-primary);
   width: 48px;
   min-width: 48px;
-  /* Prevent shrinking */
   height: 48px;
   border-radius: var(--radius-md);
   display: flex;
@@ -123,6 +138,7 @@
   color: var(--text-secondary);
   line-height: 1.5;
   word-wrap: break-word;
+  margin: 0;
 }
 
 /* Owner Configuration Dashboard */
@@ -174,9 +190,11 @@
   font-size: 0.85rem;
   width: 100%;
   box-sizing: border-box;
+  transition: border-color 0.2s;
 }
 
 .config-form-group input:focus {
+  outline: none;
   border-color: var(--accent-secondary);
   background: rgba(15, 23, 42, 0.05);
 }
@@ -196,7 +214,6 @@
 .form-group.flex-1 {
   flex: 1;
   min-width: 0;
-  /* Prevents overflow */
 }
 
 .form-label {
@@ -204,6 +221,7 @@
   margin-bottom: 4px;
   font-weight: 500;
   color: var(--text-primary);
+  font-size: 0.9rem;
 }
 
 .form-control {
@@ -224,9 +242,20 @@
   background: rgba(15, 23, 42, 0.05);
 }
 
+.form-control::placeholder {
+  color: var(--text-muted);
+}
+
 .textarea-control {
   resize: vertical;
   min-height: 120px;
+  font-family: inherit;
+}
+
+.form-row {
+  display: flex;
+  gap: 20px;
+  width: 100%;
 }
 
 .submit-inquiry-btn {
@@ -240,6 +269,11 @@
   gap: 8px;
 }
 
+.submit-inquiry-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
 .spinner-sm {
   width: 18px;
   height: 18px;
@@ -249,7 +283,7 @@
   animation: spin 0.8s linear infinite;
 }
 
-/* Success modal custom components */
+/* Success modal */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -368,7 +402,7 @@
   height: 48px;
 }
 
-/* Custom Dropdown Styling - IMPROVED */
+/* Custom Dropdown Styling */
 .custom-dropdown-group {
   position: relative;
   width: 100%;
@@ -404,7 +438,6 @@
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   line-clamp: 2;
-  /* Standard property for compatibility */
   white-space: normal;
 }
 
@@ -459,7 +492,6 @@
   font-size: 0.92rem;
   width: 100%;
   white-space: normal;
-  /* Allow wrapping */
   word-wrap: break-word;
   background: transparent;
   border: none;
@@ -512,6 +544,11 @@
   .form-row {
     gap: 16px;
   }
+
+  .contact-hero-banner {
+    min-height: 400px;
+    padding: 60px 20px;
+  }
 }
 
 /* Mobile devices */
@@ -525,11 +562,11 @@
     padding: 16px 12px 60px;
   }
 
-  .contact-title {
+  .hero-title {
     font-size: 2rem;
   }
 
-  .contact-subtitle {
+  .hero-subtitle {
     font-size: 0.95rem;
   }
 
@@ -611,14 +648,12 @@
 
   .config-form-group input {
     font-size: 0.9rem;
-    /* Larger for touch targets */
     padding: 10px 12px;
   }
 
   /* Form input fixes for better touch targets */
   .form-control {
     font-size: 16px;
-    /* Prevents zoom on iOS */
     padding: 12px 14px;
   }
 
@@ -635,16 +670,15 @@
     padding: 40px 12px;
   }
 
-  .contact-title {
+  .hero-title {
     font-size: 1.6rem;
   }
 
-  .contact-subtitle {
+  .hero-subtitle {
     font-size: 0.85rem;
   }
 
-  .contact-info-panel h2,
-  .contact-form-panel h2 {
+  .section-title {
     font-size: 1.3rem;
   }
 
