@@ -76,7 +76,7 @@ export default function Travels() {
           <span className="hero-badge badge badge-indigo">Unveil The Horizon</span>
           <h1 className="hero-title">Crafting Journeys <br /><span className="text-gradient">Beyond Imagination</span></h1>
           <p className="hero-subtitle">Discover premium packages, bespoke itineraries, and breathtaking destinations handpicked for you.</p>
-          
+
           {/* Quick Search Console */}
           <form className="search-console glass-panel" onSubmit={handleSearchSubmit}>
             <div className="search-inputs">
@@ -84,25 +84,25 @@ export default function Travels() {
                 <MapPin className="search-field-icon" />
                 <div className="input-texts">
                   <label>Where to?</label>
-                  <input 
-                    type="text" 
-                    placeholder="Search destinations..." 
+                  <input
+                    type="text"
+                    placeholder="Search destinations..."
                     value={searchQuery.destination}
-                    onChange={(e) => setSearchQuery({...searchQuery, destination: e.target.value})}
+                    onChange={(e) => setSearchQuery({ ...searchQuery, destination: e.target.value })}
                   />
                 </div>
               </div>
-              
+
               <div className="search-divider" />
-              
+
               <div className="search-input-field">
                 <Calendar className="search-field-icon" />
                 <div className="input-texts">
                   <label>When?</label>
-                  <input 
-                    type="date" 
+                  <input
+                    type="date"
                     value={searchQuery.date}
-                    onChange={(e) => setSearchQuery({...searchQuery, date: e.target.value})}
+                    onChange={(e) => setSearchQuery({ ...searchQuery, date: e.target.value })}
                   />
                 </div>
               </div>
@@ -113,19 +113,19 @@ export default function Travels() {
                 <Users className="search-field-icon" />
                 <div className="input-texts">
                   <label>Guests</label>
-                  <select 
+                  <select
                     value={searchQuery.guests}
-                    onChange={(e) => setSearchQuery({...searchQuery, guests: e.target.value})}
+                    onChange={(e) => setSearchQuery({ ...searchQuery, guests: e.target.value })}
                   >
                     <option value="1">1 Guest</option>
                     <option value="2">2 Guests</option>
                     <option value="4">4 Guests</option>
-                    <option value="6">6+ Guests</option>
+                    <option value="6">8+ Guests</option>
                   </select>
                 </div>
               </div>
             </div>
-            
+
             <button type="submit" className="btn btn-primary search-submit-btn">
               <Search size={18} />
               <span>Explore</span>
@@ -168,7 +168,7 @@ export default function Travels() {
                 </div>
                 <h3 className="card-title">{dest.title}</h3>
                 <p className="card-duration">{dest.duration}</p>
-                
+
                 <div className="card-footer-row">
                   <div className="card-price-wrapper">
                     <span className="price-label">From</span>
