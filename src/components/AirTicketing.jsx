@@ -30,6 +30,8 @@ export default function AirTicketing() {
       duration: '7h 35m',
       stops: 'Non-stop',
       price: 680,
+      baggage: '40 kg',
+      amenities: 'In-flight Entertainment, Meals, WiFi',
     },
     {
       id: 2,
@@ -40,6 +42,8 @@ export default function AirTicketing() {
       duration: '10h 15m',
       stops: '1 Stop (SIN)',
       price: 840,
+      baggage: '35 kg',
+      amenities: 'Premium Service, Gourmet Meals, Entertainment',
     },
     {
       id: 3,
@@ -50,6 +54,8 @@ export default function AirTicketing() {
       duration: '7h 35m',
       stops: 'Non-stop',
       price: 720,
+      baggage: '45 kg',
+      amenities: '5-Star Airline, Luxury Lounge, Premium Comfort',
     },
     {
       id: 4,
@@ -60,6 +66,32 @@ export default function AirTicketing() {
       duration: '9h 30m',
       stops: 'Non-stop',
       price: 910,
+      baggage: '50 kg',
+      amenities: 'Premium Seating, Full Meal Service, Amenity Kit',
+    },
+    {
+      id: 5,
+      airline: 'British Airways',
+      logo: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=100&q=80',
+      departTime: '10:30 AM',
+      arrivalTime: '05:45 PM',
+      duration: '7h 15m',
+      stops: 'Non-stop',
+      price: 750,
+      baggage: '40 kg',
+      amenities: 'Club World Service, Lounges, Gourmet Dining',
+    },
+    {
+      id: 6,
+      airline: 'Cathay Pacific',
+      logo: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=100&q=80',
+      departTime: '02:00 PM',
+      arrivalTime: '10:30 PM',
+      duration: '8h 30m',
+      stops: 'Non-stop',
+      price: 890,
+      baggage: '45 kg',
+      amenities: 'Business Class, Spa, Premium Bedding',
     },
   ];
 
@@ -277,6 +309,11 @@ export default function AirTicketing() {
                       <span className="time">{flight.arrivalTime}</span>
                       <span className="airport">{searchParams.to.substring(0, 3).toUpperCase() || 'ARR'}</span>
                     </div>
+                  </div>
+
+                  <div className="flight-details-info" style={{fontSize: '12px', color: '#888', padding: '8px 0'}}>
+                    <div>🧳 Baggage: {flight.baggage}</div>
+                    <div>✨ {flight.amenities}</div>
                   </div>
 
                   <div className="flight-price-action">

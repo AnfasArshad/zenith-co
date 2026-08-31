@@ -31,6 +31,7 @@ export default function RentCar() {
       power: 'Electric',
       acceleration: '2.1s 0-60',
       rating: '4.98',
+      features: 'Autopilot, Supercharging, 17" Touch Display',
     },
     {
       id: 2,
@@ -43,6 +44,7 @@ export default function RentCar() {
       power: 'Hybrid',
       acceleration: 'All Terrain',
       rating: '4.92',
+      features: 'Off-Road Capability, Panoramic Roof, GPS Navigation',
     },
     {
       id: 3,
@@ -55,6 +57,7 @@ export default function RentCar() {
       power: 'Petrol',
       acceleration: '3.4s 0-60',
       rating: '4.99',
+      features: 'Sport Suspension, Premium Audio, Heated Seats',
     },
     {
       id: 4,
@@ -67,6 +70,33 @@ export default function RentCar() {
       power: 'Electric',
       acceleration: '5.2s 0-60',
       rating: '4.89',
+      features: 'Virtual Cockpit, Air Suspension, Premium Interior',
+    },
+    {
+      id: 5,
+      name: 'BMW X7 Premium',
+      category: 'suv',
+      image: 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=600&q=80',
+      price: 175,
+      seats: 7,
+      transmission: 'Automatic',
+      power: 'Petrol',
+      acceleration: '5.1s 0-60',
+      rating: '4.94',
+      features: 'Luxury Interior, All-Wheel Drive, Panoramic Sunroof',
+    },
+    {
+      id: 6,
+      name: 'Mercedes-Benz S-Class',
+      category: 'luxury',
+      image: 'https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=600&q=80',
+      price: 220,
+      seats: 5,
+      transmission: 'Automatic',
+      power: 'Petrol',
+      acceleration: '4.5s 0-60',
+      rating: '4.97',
+      features: 'Burmester Sound, MAGIC BODY CONTROL, Leather Seats',
     },
   ];
 
@@ -156,6 +186,7 @@ export default function RentCar() {
               
               <div className="car-body">
                 <h3 className="car-name">{car.name}</h3>
+                <p className="car-features" style={{fontSize: '12px', color: '#888', marginBottom: '10px'}}>{car.features}</p>
                 
                 {/* Specifications grid */}
                 <div className="car-specs-grid">
