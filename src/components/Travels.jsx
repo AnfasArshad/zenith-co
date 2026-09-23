@@ -12,47 +12,75 @@ export default function Travels() {
   const destinations = [
     {
       id: 1,
-      title: 'Kyoto Cultural Odyssey',
-      location: 'Kyoto, Japan',
-      image: 'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=600&q=80',
-      price: '$1,450',
-      rating: '4.95',
-      duration: '7 Days / 6 Nights',
-      tag: 'Cultural',
-      badgeColor: 'badge-indigo',
+      title: 'Sigiriya Rock Fortress Trek',
+      location: 'Sigiriya, Sri Lanka',
+      image: 'https://images.unsplash.com/photo-1580794749460-76f97b7180d8?auto=format&fit=crop&w=600&q=80',
+      price: '$620',
+      rating: '4.96',
+      duration: '3 Days / 2 Nights',
+      tag: 'Historical',
+      badgeColor: 'tag-indigo',
+      highlights: 'Ancient Rock Palace, Frescoes, Sunrise Summit Climb',
     },
     {
       id: 2,
-      title: 'Santorini Sunset Retreat',
-      location: 'Santorini, Greece',
-      image: 'https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=600&q=80',
-      price: '$1,890',
-      rating: '4.88',
-      duration: '5 Days / 4 Nights',
-      tag: 'Luxury',
-      badgeColor: 'badge-purple',
+      title: 'Ella Hill Country Escape',
+      location: 'Ella, Sri Lanka',
+      image: 'https://images.unsplash.com/photo-1566296314736-6eaac1ca0cb9?auto=format&fit=crop&w=600&q=80',
+      price: '$540',
+      rating: '4.92',
+      duration: '4 Days / 3 Nights',
+      tag: 'Adventure',
+      badgeColor: 'tag-success',
+      highlights: 'Nine Arch Bridge, Little Adam\'s Peak, Scenic Train Ride',
     },
     {
       id: 3,
-      title: 'Bali Rainforest Escape',
-      location: 'Bali, Indonesia',
-      image: 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=600&q=80',
-      price: '$980',
-      rating: '4.91',
-      duration: '8 Days / 7 Nights',
-      tag: 'Adventure',
-      badgeColor: 'badge-success',
+      title: 'Kandy Heritage Journey',
+      location: 'Kandy, Sri Lanka',
+      image: 'https://images.unsplash.com/photo-1642095012223-65ee6d570974?auto=format&fit=crop&w=600&q=80',
+      price: '$480',
+      rating: '4.90',
+      duration: '3 Days / 2 Nights',
+      tag: 'Historical',
+      badgeColor: 'tag-purple',
+      highlights: 'Temple of the Sacred Tooth Relic, Kandy Lake, Cultural Dance',
     },
     {
       id: 4,
-      title: 'Swiss Alps Winter Magic',
-      location: 'Zermatt, Switzerland',
-      image: 'https://images.unsplash.com/photo-1502784444187-359ac186c5bb?auto=format&fit=crop&w=600&q=80',
-      price: '$2,100',
+      title: 'Galle Fort Coastal Getaway',
+      location: 'Galle, Sri Lanka',
+      image: 'https://images.unsplash.com/photo-1654561773591-57b9413c45c0?auto=format&fit=crop&w=600&q=80',
+      price: '$590',
+      rating: '4.94',
+      duration: '4 Days / 3 Nights',
+      tag: 'Romantic',
+      badgeColor: 'tag-danger',
+      highlights: 'Dutch Fort Ramparts, Lighthouse, Boutique Cafes',
+    },
+    {
+      id: 5,
+      title: 'Nuwara Eliya Tea Country',
+      location: 'Nuwara Eliya, Sri Lanka',
+      image: 'https://images.unsplash.com/photo-1544451822-38e32b887c08?auto=format&fit=crop&w=600&q=80',
+      price: '$460',
+      rating: '4.89',
+      duration: '3 Days / 2 Nights',
+      tag: 'Luxury',
+      badgeColor: 'tag-warning',
+      highlights: 'Tea Estate Tours, Misty Mountains, Colonial Bungalows',
+    },
+    {
+      id: 6,
+      title: 'Yala Wildlife Safari',
+      location: 'Yala National Park, Sri Lanka',
+      image: 'https://images.unsplash.com/photo-1705936981588-a4192f66fcfb?auto=format&fit=crop&w=600&q=80',
+      price: '$710',
       rating: '4.97',
-      duration: '6 Days / 5 Nights',
+      duration: '2 Days / 1 Night',
       tag: 'Adventure',
-      badgeColor: 'badge-pink',
+      badgeColor: 'tag-pink',
+      highlights: 'Elephant Herds, Leopard Sightings, Jeep Safari',
     },
   ];
 
@@ -72,10 +100,26 @@ export default function Travels() {
       {/* Hero Banner */}
       <section className="hero-banner">
         <div className="hero-overlay" />
+
+        {/* Floating destination snapshots */}
+        <div className="hero-floating-card hero-float-1">
+          <img src="https://images.unsplash.com/photo-1580794749460-76f97b7180d8?auto=format&fit=crop&w=300&q=90" alt="Sigiriya, Sri Lanka" />
+          <span>Sigiriya, Sri Lanka</span>
+        </div>
+        <div className="hero-floating-card hero-float-2">
+          <img src="https://images.unsplash.com/photo-1566296314736-6eaac1ca0cb9?auto=format&fit=crop&w=300&q=90" alt="Ella, Sri Lanka" />
+          <span>Ella, Sri Lanka</span>
+        </div>
+        <div className="hero-floating-card hero-float-3">
+          <img src="https://images.unsplash.com/photo-1654561773591-57b9413c45c0?auto=format&fit=crop&w=300&q=90" alt="Galle Fort, Sri Lanka" />
+          <span>Galle Fort, Sri Lanka</span>
+        </div>
+
         <div className="hero-content container">
-          <span className="hero-badge badge badge-indigo">Unveil The Horizon</span>
-          <h1 className="hero-title">Crafting Journeys <br /><span className="text-gradient">Beyond Imagination</span></h1>
-          <p className="hero-subtitle">Discover premium packages, bespoke itineraries, and breathtaking destinations handpicked for you.</p>
+         
+          <h1 className="hero-title">Discover the Pearl <br /><span className="text-gradient">of the Indian Ocean</span></h1>
+          <p className="hero-subtitle">Handpicked Sri Lankan escapes — ancient fortresses, misty tea country, golden coastlines and wildlife safaris — all planned around you.</p>
+
 
           {/* Quick Search Console */}
           <form className="search-console glass-panel" onSubmit={handleSearchSubmit}>
@@ -131,6 +175,26 @@ export default function Travels() {
               <span>Explore</span>
             </button>
           </form>
+
+          {/* Trust Stats Row */}
+          <div className="hero-stats-row">
+            <div className="hero-stat">
+              <span className="hero-stat-value">50K+</span>
+              <span className="hero-stat-label">Happy Travelers</span>
+            </div>
+            <div className="hero-stat">
+              <span className="hero-stat-value">120+</span>
+              <span className="hero-stat-label">Destinations</span>
+            </div>
+            <div className="hero-stat">
+              <span className="hero-stat-value">4.9<Star size={14} className="hero-stat-star" /></span>
+              <span className="hero-stat-label">Average Rating</span>
+            </div>
+            <div className="hero-stat">
+              <span className="hero-stat-value">24/7</span>
+              <span className="hero-stat-label">Concierge Support</span>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -153,7 +217,7 @@ export default function Travels() {
               <div className="card-image-wrapper">
                 <img src={dest.image} alt={dest.title} className="card-image" loading="lazy" />
                 <div className="card-overlay" />
-                <span className={`card-tag badge ${dest.badgeColor}`}>{dest.tag}</span>
+                <span className={`card-tag ${dest.badgeColor}`}>{dest.tag}</span>
               </div>
               <div className="card-body">
                 <div className="card-header-row">
@@ -168,16 +232,12 @@ export default function Travels() {
                 </div>
                 <h3 className="card-title">{dest.title}</h3>
                 <p className="card-duration">{dest.duration}</p>
+                <p className="card-highlights" style={{fontSize: '12px', color: '#888', marginTop: '8px'}}>{dest.highlights}</p>
 
-                <div className="card-footer-row">
-                  <div className="card-price-wrapper">
-                    <span className="price-label">From</span>
-                    <span className="price-value">{dest.price}</span>
-                  </div>
-                  <button className="btn btn-primary btn-sm-circle" onClick={() => alert(`Booking flow for: ${dest.title}`)}>
-                    <ArrowRight size={16} />
-                  </button>
-                </div>
+                <button className="btn btn-primary card-explore-btn" onClick={() => alert(`Booking: ${dest.title}\nHighlights: ${dest.highlights}`)}>
+                  <span>Explore</span>
+                  <ArrowRight size={16} />
+                </button>
               </div>
             </div>
           ))}
@@ -212,7 +272,7 @@ export default function Travels() {
         </div>
         <div className="testimonials-grid">
           <div className="testimonial-card glass-panel">
-            <p className="testimonial-text">"Zenith Tours curated our honeymoon in Santorini. Every detail, from the private caldera sunset yacht to the luxury villa overlooking the bay, was pure perfection."</p>
+            <p className="testimonial-text">"Zenith Tours curated our honeymoon in Galle. Every detail, from the sunset ramparts walk to the boutique villa overlooking the fort, was pure perfection."</p>
             <div className="testimonial-author">
               <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80" alt="Sarah J." className="author-avatar" />
               <div>
@@ -223,7 +283,7 @@ export default function Travels() {
           </div>
 
           <div className="testimonial-card glass-panel">
-            <p className="testimonial-text">"The cultural odyssey in Kyoto exceeded all expectations. Our private local guide took us to hidden temples and traditional tea ceremonies. Highly recommended!"</p>
+            <p className="testimonial-text">"The heritage journey through Kandy exceeded all expectations. Our private local guide took us to the Temple of the Tooth and hidden tea estates. Highly recommended!"</p>
             <div className="testimonial-author">
               <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80" alt="Marcus V." className="author-avatar" />
               <div>
