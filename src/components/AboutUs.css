@@ -1,87 +1,109 @@
-/* About Hero Banner */
+/* About Hero Banner - Perfectly matched to Contact Us & Travels */
 .about-hero {
   position: relative;
-  min-height: 540px;
+  min-height: 520px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 100px 0 70px;
-  background-image:
-    linear-gradient(
-      180deg,
-      rgba(15, 23, 42, 0.72) 0%,
-      rgba(15, 23, 42, 0.88) 100%
-    ),
-    url("https://images.unsplash.com/photo-1546708973-b339540b5162?auto=format&fit=crop&w=1920&q=80");
+  padding: 80px 20px 90px;
+  /* Light overlay matching Travels and Contact Us */
+  background-image: 
+    linear-gradient(rgba(15, 23, 42, 0.38), rgba(15, 23, 42, 0.68)),
+    url('https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?auto=format&fit=crop&w=1920&q=80');
   background-size: cover;
   background-position: center;
   text-align: center;
 }
 
-/* Badge styling with a solid frosted pill background */
+/* Feathered Radial Mask to blend seamlessly with the light background */
+.about-hero .hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, transparent 30%, var(--bg-primary, #ffffff) 90%);
+  pointer-events: none;
+}
+
+.about-hero .hero-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 850px;
+}
+
+/* Badge styling matching Contact Us & Travels */
 .about-hero .badge {
-  background: rgba(255, 255, 255, 0.15) !important;
+  background: rgba(255, 255, 255, 0.2) !important;
   color: #ffffff !important;
-  border: 1px solid rgba(255, 255, 255, 0.35) !important;
+  border: 1px solid rgba(255, 255, 255, 0.4) !important;
   backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   font-weight: 700;
   letter-spacing: 0.08em;
   padding: 6px 16px;
   display: inline-block;
+  margin-bottom: 20px;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
 }
 
+/* Clean, crisp typography */
 .about-title {
-  font-size: clamp(2.4rem, 5vw, 3.5rem);
-  letter-spacing: -0.5px;
-  margin-top: 18px;
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  letter-spacing: -1px;
+  margin-top: 10px;
   margin-bottom: 20px;
   color: #ffffff;
   font-weight: 800;
   line-height: 1.15;
-  text-shadow:
-    0 4px 20px rgba(0, 0, 0, 0.7),
-    0 1px 3px rgba(0, 0, 0, 0.9);
+  text-shadow: 0 2px 12px rgba(15, 23, 42, 0.6);
 }
 
-/* Brighter gradient that pops on dark backgrounds */
+/* High-contrast gradient matching other headers */
 .about-title .text-gradient {
-  background: linear-gradient(135deg, #a5b4fc 0%, #f472b6 50%, #38bdf8 100%);
+  background: linear-gradient(135deg, #a5b4fc 0%, #f472b6 55%, #38bdf8 100%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.6));
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.4));
 }
 
 .about-subtitle {
-  font-size: 1.15rem;
+  font-size: clamp(0.95rem, 2vw, 1.15rem);
   line-height: 1.7;
   max-width: 720px;
   color: rgba(255, 255, 255, 0.95);
   margin: 0 auto 35px;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+  text-shadow: 0 1px 6px rgba(15, 23, 42, 0.6);
   font-weight: 400;
 }
 
-/* Stats Grid on Hero */
+/* Stats Pill Bar matching Search Consoles */
 .about-stats-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   width: 100%;
-  max-width: 950px;
-  padding: 24px 30px;
-  border-radius: var(--radius-lg);
-  background: rgba(255, 255, 255, 0.9);
-  box-shadow: 0 10px 40px rgba(15, 23, 42, 0.08);
-  border: 1px solid var(--glass-border);
-  gap: 20px;
+  max-width: 920px;
+  padding: 20px 28px;
+  border-radius: var(--radius-full, 9999px);
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 
+    0 20px 45px -10px rgba(15, 23, 42, 0.18),
+    0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+  gap: 16px;
 }
 
 .about-stat-item {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
+  gap: 3px;
 }
 
 .about-stat-item:not(:last-child) {
@@ -90,18 +112,18 @@
 
 .about-stat-number {
   font-family: var(--font-heading);
-  font-size: 2rem;
+  font-size: 1.85rem;
   font-weight: 800;
-  color: var(--accent-primary);
+  color: var(--accent-primary, #6366f1);
   line-height: 1.1;
 }
 
 .about-stat-label {
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--text-secondary);
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--text-secondary, #64748b);
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.05em;
 }
 
 /* Story Narrative Section */
@@ -135,7 +157,7 @@
 
 .story-badge-card {
   position: absolute;
-  bottom: -24px;
+  bottom: -20px;
   right: -20px;
   padding: 16px 20px;
   border-radius: var(--radius-md);
@@ -368,7 +390,9 @@
     bottom: -15px;
   }
   .about-stats-grid {
+    border-radius: var(--radius-lg, 16px);
     grid-template-columns: repeat(2, 1fr);
+    padding: 20px;
   }
   .about-stat-item:nth-child(2) {
     border-right: none;
@@ -377,16 +401,17 @@
 
 @media (max-width: 600px) {
   .about-title {
-    font-size: 2.3rem;
+    font-size: 2.2rem;
   }
   .about-stats-grid {
     grid-template-columns: 1fr;
-    padding: 20px;
+    gap: 14px;
+    padding: 16px;
   }
   .about-stat-item {
     border-right: none !important;
     border-bottom: 1px solid rgba(15, 23, 42, 0.08);
-    padding-bottom: 12px;
+    padding-bottom: 10px;
   }
   .about-stat-item:last-child {
     border-bottom: none;
