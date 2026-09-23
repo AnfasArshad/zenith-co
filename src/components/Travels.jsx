@@ -103,74 +103,113 @@ export default function Travels() {
 
         {/* Floating destination snapshots */}
         <div className="hero-floating-card hero-float-1">
-          <img src="https://images.unsplash.com/photo-1580794749460-76f97b7180d8?auto=format&fit=crop&w=300&q=90" alt="Sigiriya, Sri Lanka" />
+          <img
+            src="https://images.unsplash.com/photo-1580794749460-76f97b7180d8?auto=format&fit=crop&w=300&q=90"
+            alt="Sigiriya, Sri Lanka"
+          />
           <span>Sigiriya, Sri Lanka</span>
         </div>
         <div className="hero-floating-card hero-float-2">
-          <img src="https://images.unsplash.com/photo-1566296314736-6eaac1ca0cb9?auto=format&fit=crop&w=300&q=90" alt="Ella, Sri Lanka" />
+          <img
+            src="https://images.unsplash.com/photo-1566296314736-6eaac1ca0cb9?auto=format&fit=crop&w=300&q=90"
+            alt="Ella, Sri Lanka"
+          />
           <span>Ella, Sri Lanka</span>
         </div>
         <div className="hero-floating-card hero-float-3">
-          <img src="https://images.unsplash.com/photo-1654561773591-57b9413c45c0?auto=format&fit=crop&w=300&q=90" alt="Galle Fort, Sri Lanka" />
+          <img
+            src="https://images.unsplash.com/photo-1654561773591-57b9413c45c0?auto=format&fit=crop&w=300&q=90"
+            alt="Galle Fort, Sri Lanka"
+          />
           <span>Galle Fort, Sri Lanka</span>
         </div>
 
         <div className="hero-content container">
-         
-          <h1 className="hero-title">Discover the Pearl <br /><span className="text-gradient">of the Indian Ocean</span></h1>
-          <p className="hero-subtitle">Handpicked Sri Lankan escapes — ancient fortresses, misty tea country, golden coastlines and wildlife safaris — all planned around you.</p>
-
+          <h1 className="hero-title">
+            Discover the Pearl <br />
+            <span className="text-gradient">of the Indian Ocean</span>
+          </h1>
+          <p className="hero-subtitle">
+            Handpicked Sri Lankan escapes — ancient fortresses, misty tea
+            country, golden coastlines and wildlife safaris — all planned around
+            you.
+          </p>
 
           {/* Quick Search Console */}
-          <form className="search-console glass-panel" onSubmit={handleSearchSubmit}>
+          <form
+            className="search-console glass-panel"
+            onSubmit={handleSearchSubmit}
+          >
             <div className="search-inputs">
-              <div className="search-input-field">
-                <MapPin className="search-field-icon" />
+              {/* Destination Segment */}
+              <div className="search-segment">
+                <div className="segment-icon-box">
+                  <MapPin size={20} className="search-field-icon" />
+                </div>
                 <div className="input-texts">
-                  <label>Where to?</label>
+                  <label htmlFor="search-dest">Where to?</label>
                   <input
+                    id="search-dest"
                     type="text"
-                    placeholder="Search destinations..."
+                    placeholder="Sigiriya, Ella, Galle..."
                     value={searchQuery.destination}
-                    onChange={(e) => setSearchQuery({ ...searchQuery, destination: e.target.value })}
+                    onChange={(e) =>
+                      setSearchQuery({
+                        ...searchQuery,
+                        destination: e.target.value,
+                      })
+                    }
                   />
                 </div>
               </div>
 
               <div className="search-divider" />
 
-              <div className="search-input-field">
-                <Calendar className="search-field-icon" />
+              {/* Date Segment */}
+              <div className="search-segment">
+                <div className="segment-icon-box">
+                  <Calendar size={20} className="search-field-icon" />
+                </div>
                 <div className="input-texts">
-                  <label>When?</label>
+                  <label htmlFor="search-date">When?</label>
                   <input
+                    id="search-date"
                     type="date"
                     value={searchQuery.date}
-                    onChange={(e) => setSearchQuery({ ...searchQuery, date: e.target.value })}
+                    onChange={(e) =>
+                      setSearchQuery({ ...searchQuery, date: e.target.value })
+                    }
                   />
                 </div>
               </div>
 
               <div className="search-divider" />
 
-              <div className="search-input-field">
-                <Users className="search-field-icon" />
+              {/* Guests Segment */}
+              <div className="search-segment">
+                <div className="segment-icon-box">
+                  <Users size={20} className="search-field-icon" />
+                </div>
                 <div className="input-texts">
-                  <label>Guests</label>
+                  <label htmlFor="search-guests">Travelers</label>
                   <select
+                    id="search-guests"
                     value={searchQuery.guests}
-                    onChange={(e) => setSearchQuery({ ...searchQuery, guests: e.target.value })}
+                    onChange={(e) =>
+                      setSearchQuery({ ...searchQuery, guests: e.target.value })
+                    }
                   >
-                    <option value="1">1 Guest</option>
-                    <option value="2">2 Guests</option>
-                    <option value="4">4 Guests</option>
-                    <option value="8">8+ Guests</option>
+                    <option value="1">1 Solo Traveler</option>
+                    <option value="2">2 Guests (Couple)</option>
+                    <option value="4">4 Guests (Family)</option>
+                    <option value="8">8+ Group Voyagers</option>
                   </select>
                 </div>
               </div>
             </div>
 
-            <button type="submit" className="btn btn-primary search-submit-btn">
+            {/* Submit Button */}
+            <button type="submit" className="search-submit-btn">
               <Search size={18} />
               <span>Explore</span>
             </button>
@@ -187,7 +226,10 @@ export default function Travels() {
               <span className="hero-stat-label">Destinations</span>
             </div>
             <div className="hero-stat">
-              <span className="hero-stat-value">4.9<Star size={14} className="hero-stat-star" /></span>
+              <span className="hero-stat-value">
+                4.9
+                <Star size={14} className="hero-stat-star" />
+              </span>
               <span className="hero-stat-label">Average Rating</span>
             </div>
             <div className="hero-stat">
@@ -203,7 +245,9 @@ export default function Travels() {
         <div className="section-header">
           <div>
             <h2 className="section-title">Curated Experiences</h2>
-            <p className="section-subtitle">Exquisite itineraries tailored for ultimate luxury and comfort</p>
+            <p className="section-subtitle">
+              Exquisite itineraries tailored for ultimate luxury and comfort
+            </p>
           </div>
           <button className="btn btn-secondary flex-center gap-2">
             <span>View All Packages</span>
@@ -215,9 +259,16 @@ export default function Travels() {
           {destinations.map((dest) => (
             <div key={dest.id} className="package-card glass-panel">
               <div className="card-image-wrapper">
-                <img src={dest.image} alt={dest.title} className="card-image" loading="lazy" />
+                <img
+                  src={dest.image}
+                  alt={dest.title}
+                  className="card-image"
+                  loading="lazy"
+                />
                 <div className="card-overlay" />
-                <span className={`card-tag ${dest.badgeColor}`}>{dest.tag}</span>
+                <span className={`card-tag ${dest.badgeColor}`}>
+                  {dest.tag}
+                </span>
               </div>
               <div className="card-body">
                 <div className="card-header-row">
@@ -232,9 +283,21 @@ export default function Travels() {
                 </div>
                 <h3 className="card-title">{dest.title}</h3>
                 <p className="card-duration">{dest.duration}</p>
-                <p className="card-highlights" style={{fontSize: '12px', color: '#888', marginTop: '8px'}}>{dest.highlights}</p>
+                <p
+                  className="card-highlights"
+                  style={{ fontSize: "12px", color: "#888", marginTop: "8px" }}
+                >
+                  {dest.highlights}
+                </p>
 
-                <button className="btn btn-primary card-explore-btn" onClick={() => alert(`Booking: ${dest.title}\nHighlights: ${dest.highlights}`)}>
+                <button
+                  className="btn btn-primary card-explore-btn"
+                  onClick={() =>
+                    alert(
+                      `Booking: ${dest.title}\nHighlights: ${dest.highlights}`,
+                    )
+                  }
+                >
                   <span>Explore</span>
                   <ArrowRight size={16} />
                 </button>
@@ -268,13 +331,23 @@ export default function Travels() {
       <section className="testimonials-section container">
         <div className="text-center">
           <h2 className="section-title">Voices of Wonder</h2>
-          <p className="section-subtitle">What our global voyagers say about their custom trips</p>
+          <p className="section-subtitle">
+            What our global voyagers say about their custom trips
+          </p>
         </div>
         <div className="testimonials-grid">
           <div className="testimonial-card glass-panel">
-            <p className="testimonial-text">"Zenith Tours curated our honeymoon in Galle. Every detail, from the sunset ramparts walk to the boutique villa overlooking the fort, was pure perfection."</p>
+            <p className="testimonial-text">
+              "Zenith Tours curated our honeymoon in Galle. Every detail, from
+              the sunset ramparts walk to the boutique villa overlooking the
+              fort, was pure perfection."
+            </p>
             <div className="testimonial-author">
-              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80" alt="Sarah J." className="author-avatar" />
+              <img
+                src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80"
+                alt="Sarah J."
+                className="author-avatar"
+              />
               <div>
                 <h4 className="author-name">Sarah Jenkins</h4>
                 <p className="author-title">Explorer since 2024</p>
@@ -283,9 +356,17 @@ export default function Travels() {
           </div>
 
           <div className="testimonial-card glass-panel">
-            <p className="testimonial-text">"The heritage journey through Kandy exceeded all expectations. Our private local guide took us to the Temple of the Tooth and hidden tea estates. Highly recommended!"</p>
+            <p className="testimonial-text">
+              "The heritage journey through Kandy exceeded all expectations. Our
+              private local guide took us to the Temple of the Tooth and hidden
+              tea estates. Highly recommended!"
+            </p>
             <div className="testimonial-author">
-              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80" alt="Marcus V." className="author-avatar" />
+              <img
+                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80"
+                alt="Marcus V."
+                className="author-avatar"
+              />
               <div>
                 <h4 className="author-name">Marcus Vance</h4>
                 <p className="author-title">Culture Enthusiast</p>
