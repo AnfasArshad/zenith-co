@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
-import { Compass, Car, Plane, Mail, Menu, X } from 'lucide-react';
+import { Compass, Car, Plane, Info, Mail, Menu, X } from 'lucide-react';
 import './Navbar.css';
 
 export default function Navbar({ activeTab, setActiveTab }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const navItems = [
-    { id: 'travels', label: 'Travels', icon: Compass },
-    { id: 'rent-a-car', label: 'Rent a Car', icon: Car },
-    { id: 'air-ticketing', label: 'Air Ticketing', icon: Plane },
-    { id: 'contact-us', label: 'Contact Us', icon: Mail },
+    { id: "travels", label: "Travels", icon: Compass },
+    // { id: 'rent-a-car', label: 'Rent a Car', icon: Car },
+    { id: "air-ticketing", label: "Air Ticketing", icon: Plane },
+    { id: "about-us", label: "About Us", icon: Info },
+    { id: "contact-us", label: "Contact Us", icon: Mail },
   ];
 
   const handleTabClick = (tabId) => {

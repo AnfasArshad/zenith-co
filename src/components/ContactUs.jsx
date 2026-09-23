@@ -22,7 +22,7 @@ export default function ContactUs() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownOptions = [
     { value: 'Travels', label: 'Travels (Holiday Packages & Stays)' },
-    { value: 'Rent a Car', label: 'Rent a Car (Premium Car Rentals)' },
+    // { value: 'Rent a Car', label: 'Rent a Car (Premium Car Rentals)' },
     { value: 'Air Ticketing', label: 'Air Ticketing (Flight Reservation)' }
   ];
 
