@@ -1,4 +1,26 @@
-/* About Hero Banner - Perfectly matched to Contact Us & Travels */
+/* ==========================================================================
+   About Us Page Styles - Dark / Cool Glassmorphic UI Design System
+   Compatible with Travels.css & ContactUs.css
+   ========================================================================== */
+
+/* Screen Wrapper to ensure zero horizontal scroll across all viewports */
+.about-screen {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.about-screen *,
+.about-screen *::before,
+.about-screen *::after {
+  box-sizing: border-box;
+}
+
+/* ==========================================================================
+   Hero Banner Section
+   ========================================================================== */
 .about-hero {
   position: relative;
   min-height: 520px;
@@ -6,13 +28,13 @@
   align-items: center;
   justify-content: center;
   padding: 80px 20px 90px;
-  /* Light overlay matching Travels and Contact Us */
   background-image: 
     linear-gradient(rgba(15, 23, 42, 0.38), rgba(15, 23, 42, 0.68)),
     url('https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?auto=format&fit=crop&w=1920&q=80');
   background-size: cover;
   background-position: center;
   text-align: center;
+  width: 100%;
 }
 
 /* Feathered Radial Mask to blend seamlessly with the light background */
@@ -22,7 +44,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at center, transparent 30%, var(--bg-primary, #ffffff) 90%);
+  background: radial-gradient(circle at center, transparent 30%, var(--bg-primary, #f0f4f8) 90%);
   pointer-events: none;
 }
 
@@ -33,6 +55,7 @@
   flex-direction: column;
   align-items: center;
   max-width: 850px;
+  width: 100%;
 }
 
 /* Badge styling matching Contact Us & Travels */
@@ -48,11 +71,12 @@
   display: inline-block;
   margin-bottom: 20px;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  font-size: 0.75rem;
 }
 
-/* Clean, crisp typography */
+/* Clean, crisp typography with fluid clamping */
 .about-title {
-  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  font-size: clamp(2rem, 5vw, 3.4rem);
   letter-spacing: -1px;
   margin-top: 10px;
   margin-bottom: 20px;
@@ -60,6 +84,8 @@
   font-weight: 800;
   line-height: 1.15;
   text-shadow: 0 2px 12px rgba(15, 23, 42, 0.6);
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 /* High-contrast gradient matching other headers */
@@ -72,16 +98,17 @@
 }
 
 .about-subtitle {
-  font-size: clamp(0.95rem, 2vw, 1.15rem);
+  font-size: clamp(0.92rem, 2vw, 1.15rem);
   line-height: 1.7;
   max-width: 720px;
+  width: 100%;
   color: rgba(255, 255, 255, 0.95);
   margin: 0 auto 35px;
   text-shadow: 0 1px 6px rgba(15, 23, 42, 0.6);
   font-weight: 400;
 }
 
-/* Stats Pill Bar matching Search Consoles */
+/* Stats Pill Bar */
 .about-stats-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -112,7 +139,7 @@
 
 .about-stat-number {
   font-family: var(--font-heading);
-  font-size: 1.85rem;
+  font-size: clamp(1.5rem, 3.5vw, 1.85rem);
   font-weight: 800;
   color: var(--accent-primary, #6366f1);
   line-height: 1.1;
@@ -124,11 +151,15 @@
   color: var(--text-secondary, #64748b);
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  text-align: center;
 }
 
-/* Story Narrative Section */
+/* ==========================================================================
+   Story / Narrative Section
+   ========================================================================== */
 .about-story-section {
   padding: 90px 0 60px;
+  width: 100%;
 }
 
 .about-story-grid {
@@ -136,10 +167,13 @@
   grid-template-columns: 1fr 1.15fr;
   gap: 50px;
   align-items: center;
+  width: 100%;
 }
 
 .story-image-stack {
   position: relative;
+  width: 100%;
+  max-width: 100%;
 }
 
 .story-image-primary {
@@ -147,18 +181,21 @@
   overflow: hidden;
   height: 420px;
   box-shadow: 0 20px 45px rgba(15, 23, 42, 0.12);
+  width: 100%;
 }
 
 .story-image-primary img {
   width: 100%;
   height: 100%;
+  max-width: 100%;
   object-fit: cover;
+  display: block;
 }
 
 .story-badge-card {
   position: absolute;
   bottom: -20px;
-  right: -20px;
+  right: -10px;
   padding: 16px 20px;
   border-radius: var(--radius-md);
   display: flex;
@@ -168,6 +205,8 @@
   box-shadow: 0 15px 35px rgba(15, 23, 42, 0.15);
   border: 1px solid var(--glass-border);
   text-align: left;
+  max-width: 100%;
+  z-index: 2;
 }
 
 .story-badge-icon {
@@ -176,6 +215,7 @@
   padding: 8px;
   border-radius: var(--radius-sm);
   box-sizing: content-box;
+  flex-shrink: 0;
 }
 
 .story-badge-card h4 {
@@ -196,10 +236,11 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+  width: 100%;
 }
 
 .story-heading {
-  font-size: 2.3rem;
+  font-size: clamp(1.6rem, 3.5vw, 2.3rem);
   line-height: 1.2;
   letter-spacing: -0.5px;
   margin-top: 4px;
@@ -207,7 +248,7 @@
 }
 
 .story-paragraph {
-  font-size: 0.98rem;
+  font-size: clamp(0.92rem, 1.8vw, 0.98rem);
   color: var(--text-secondary);
   line-height: 1.7;
   margin: 0;
@@ -220,48 +261,87 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
+  width: 100%;
 }
 
 .story-feature-list li {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 10px;
   font-size: 0.92rem;
   color: var(--text-primary);
   font-weight: 500;
+  line-height: 1.45;
 }
 
 .check-icon {
   color: #10b981;
   flex-shrink: 0;
+  margin-top: 2px;
 }
 
 .story-actions {
   display: flex;
   gap: 16px;
   margin-top: 8px;
+  flex-wrap: wrap;
 }
 
-/* Core Values Section */
+/* ==========================================================================
+   Shared Section Headers & Layout Utilities
+   ========================================================================== */
+.section-header {
+  margin-bottom: 40px;
+  text-align: center;
+  width: 100%;
+}
+
+.section-header.text-center {
+  text-align: center;
+}
+
+.flex-column-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.section-title {
+  font-size: clamp(1.65rem, 3.5vw, 2.2rem);
+  letter-spacing: -0.5px;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.section-subtitle {
+  font-size: clamp(0.88rem, 2vw, 1.05rem);
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   Core Values Section
+   ========================================================================== */
 .about-values-section {
   padding: 85px 0;
   background: linear-gradient(
     180deg,
-    var(--bg-primary) 0%,
-    var(--bg-secondary) 100%
+    var(--bg-primary, #f0f4f8) 0%,
+    var(--bg-secondary, #ffffff) 100%
   );
   margin: 60px 0;
-}
-
-.flex-column-center {
-  flex-direction: column;
-  align-items: center;
+  width: 100%;
 }
 
 .values-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 28px;
+  width: 100%;
 }
 
 .value-card {
@@ -272,6 +352,7 @@
   flex-direction: column;
   gap: 14px;
   transition: transform var(--transition-normal);
+  width: 100%;
 }
 
 .value-card:hover {
@@ -288,11 +369,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 }
 
 .value-title {
   font-size: 1.2rem;
   color: var(--text-primary);
+  margin: 0;
 }
 
 .value-desc {
@@ -302,15 +385,19 @@
   margin: 0;
 }
 
-/* Team Curators Section */
+/* ==========================================================================
+   Team Curators Section
+   ========================================================================== */
 .about-team-section {
   padding-bottom: 90px;
+  width: 100%;
 }
 
 .team-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 30px;
+  width: 100%;
 }
 
 .team-card {
@@ -319,19 +406,23 @@
   text-align: left;
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .team-image-wrapper {
   position: relative;
   height: 260px;
   overflow: hidden;
+  width: 100%;
 }
 
 .team-image {
   width: 100%;
   height: 100%;
+  max-width: 100%;
   object-fit: cover;
   transition: transform var(--transition-slow);
+  display: block;
 }
 
 .team-card:hover .team-image {
@@ -349,6 +440,7 @@
     transparent 65%,
     rgba(15, 23, 42, 0.5)
   );
+  pointer-events: none;
 }
 
 .team-body {
@@ -356,11 +448,13 @@
   display: flex;
   flex-direction: column;
   gap: 6px;
+  flex: 1;
 }
 
 .team-name {
   font-size: 1.25rem;
   color: var(--text-primary);
+  margin: 0;
 }
 
 .team-role {
@@ -369,7 +463,7 @@
   text-transform: uppercase;
   letter-spacing: 0.04em;
   color: var(--accent-primary);
-  margin-bottom: 8px;
+  margin-bottom: 4px;
 }
 
 .team-bio {
@@ -379,48 +473,371 @@
   margin: 0;
 }
 
-/* Responsive Styles */
+/* ==========================================================================
+   Responsive Breakpoints
+   ========================================================================== */
+
+/* Tablet & Medium Screens (max-width: 960px) */
 @media (max-width: 960px) {
-  .about-story-grid {
-    grid-template-columns: 1fr;
-    gap: 40px;
+  .about-hero {
+    min-height: 480px;
+    padding: 70px 20px 80px;
   }
-  .story-badge-card {
-    right: 15px;
-    bottom: -15px;
-  }
+
   .about-stats-grid {
     border-radius: var(--radius-lg, 16px);
     grid-template-columns: repeat(2, 1fr);
     padding: 20px;
+    gap: 16px;
   }
-  .about-stat-item:nth-child(2) {
+
+  .about-stat-item:not(:last-child) {
     border-right: none;
+  }
+
+  .about-stat-item:nth-child(odd) {
+    border-right: 1px solid rgba(15, 23, 42, 0.08);
+  }
+
+  .about-stat-item:nth-child(-n+2) {
+    border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+    padding-bottom: 12px;
+  }
+
+  .about-story-section {
+    padding: 70px 0 50px;
+  }
+
+  .about-story-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .story-image-primary {
+    height: 380px;
+  }
+
+  .story-badge-card {
+    right: 16px;
+    bottom: -16px;
+  }
+
+  .about-values-section {
+    padding: 70px 0;
+    margin: 50px 0;
+  }
+
+  .values-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .about-team-section {
+    padding-bottom: 70px;
+  }
+
+  .team-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
   }
 }
 
-@media (max-width: 600px) {
-  .about-title {
-    font-size: 2.2rem;
+/* Mobile & Small Tablets (max-width: 768px) */
+@media (max-width: 768px) {
+  .about-hero {
+    min-height: auto;
+    padding: 60px 16px 50px;
   }
+
+  .about-hero .hero-content.container {
+    padding: 0;
+  }
+
+  .about-title {
+    font-size: clamp(1.8rem, 5vw, 2.4rem);
+    margin-bottom: 16px;
+  }
+
+  .about-subtitle {
+    font-size: 0.95rem;
+    margin-bottom: 28px;
+    padding: 0 8px;
+  }
+
+  /* Stats grid converted to single column */
   .about-stats-grid {
     grid-template-columns: 1fr;
-    gap: 14px;
-    padding: 16px;
+    gap: 16px;
+    padding: 18px 20px;
+    border-radius: var(--radius-lg, 16px);
   }
+
   .about-stat-item {
     border-right: none !important;
     border-bottom: 1px solid rgba(15, 23, 42, 0.08);
-    padding-bottom: 10px;
+    padding-bottom: 12px;
   }
+
   .about-stat-item:last-child {
     border-bottom: none;
     padding-bottom: 0;
   }
+
+  /* Story section: single column & unified spacing */
+  .about-story-section {
+    padding: 50px 0 35px;
+  }
+
+  .about-story-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .story-image-stack {
+    margin-bottom: 24px;
+  }
+
+  .story-image-primary {
+    height: 300px;
+  }
+
+  /* Floating badge rests naturally below image without horizontal overflow */
+  .story-badge-card {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    margin: -24px 16px 0;
+    width: auto;
+  }
+
+  .story-heading {
+    font-size: 1.65rem;
+  }
+
+  /* Action buttons convert to full-width stack */
   .story-actions {
     flex-direction: column;
+    width: 100%;
+    gap: 12px;
   }
+
   .story-actions .btn {
     width: 100%;
+  }
+
+  /* Value pillars converted to single column */
+  .about-values-section {
+    padding: 50px 0;
+    margin: 40px 0;
+  }
+
+  .values-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .value-card {
+    padding: 24px 20px;
+    gap: 12px;
+  }
+
+  /* Team curators converted to single column */
+  .about-team-section {
+    padding-bottom: 60px;
+  }
+
+  .team-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .team-image-wrapper {
+    height: 240px;
+  }
+
+  .team-body {
+    padding: 20px;
+  }
+
+  .section-header {
+    margin-bottom: 28px;
+  }
+
+  .section-title {
+    font-size: 1.6rem;
+  }
+}
+
+/* Compact Mobile Devices (max-width: 480px) */
+@media (max-width: 480px) {
+  .about-screen .container {
+    padding: 0 16px;
+  }
+
+  .about-hero {
+    padding: 48px 12px 40px;
+  }
+
+  .about-hero .badge {
+    font-size: 0.7rem;
+    padding: 5px 12px;
+    margin-bottom: 14px;
+  }
+
+  .about-title {
+    font-size: 1.65rem;
+    letter-spacing: -0.5px;
+  }
+
+  .about-title br {
+    display: none;
+  }
+
+  .about-subtitle {
+    font-size: 0.88rem;
+    line-height: 1.6;
+    margin-bottom: 22px;
+    padding: 0 4px;
+  }
+
+  .about-stats-grid {
+    padding: 16px 14px;
+    gap: 14px;
+  }
+
+  .about-stat-number {
+    font-size: 1.55rem;
+  }
+
+  .about-stat-label {
+    font-size: 0.7rem;
+  }
+
+  .about-story-section {
+    padding: 40px 0 25px;
+  }
+
+  .story-image-stack {
+    margin-bottom: 20px;
+  }
+
+  .story-image-primary {
+    height: 220px;
+  }
+
+  .story-badge-card {
+    margin: -20px 8px 0;
+    padding: 12px 14px;
+    gap: 10px;
+  }
+
+  .story-badge-icon {
+    padding: 6px;
+  }
+
+  .story-badge-card h4 {
+    font-size: 0.86rem;
+  }
+
+  .story-badge-card p {
+    font-size: 0.72rem;
+  }
+
+  .story-heading {
+    font-size: 1.35rem;
+    line-height: 1.25;
+  }
+
+  .story-paragraph {
+    font-size: 0.88rem;
+    line-height: 1.6;
+  }
+
+  .story-feature-list {
+    gap: 10px;
+    margin: 6px 0 12px;
+  }
+
+  .story-feature-list li {
+    font-size: 0.84rem;
+    gap: 8px;
+  }
+
+  .story-actions {
+    gap: 10px;
+  }
+
+  .story-actions .btn {
+    padding: 11px 20px;
+    font-size: 0.88rem;
+  }
+
+  .about-values-section {
+    padding: 40px 0;
+    margin: 30px 0;
+  }
+
+  .values-grid {
+    gap: 16px;
+  }
+
+  .value-card {
+    padding: 20px 16px;
+    gap: 10px;
+  }
+
+  .value-icon-wrapper {
+    width: 44px;
+    height: 44px;
+  }
+
+  .value-title {
+    font-size: 1.1rem;
+  }
+
+  .value-desc {
+    font-size: 0.84rem;
+    line-height: 1.55;
+  }
+
+  .about-team-section {
+    padding-bottom: 45px;
+  }
+
+  .team-grid {
+    gap: 16px;
+  }
+
+  .team-image-wrapper {
+    height: 200px;
+  }
+
+  .team-body {
+    padding: 16px;
+  }
+
+  .team-name {
+    font-size: 1.12rem;
+  }
+
+  .team-role {
+    font-size: 0.76rem;
+    margin-bottom: 4px;
+  }
+
+  .team-bio {
+    font-size: 0.82rem;
+  }
+
+  .section-header {
+    margin-bottom: 22px;
+  }
+
+  .section-title {
+    font-size: 1.35rem;
+  }
+
+  .section-subtitle {
+    font-size: 0.82rem;
   }
 }
