@@ -105,6 +105,7 @@ export default function AboutUs({ setActiveTab }) {
               <img
                 src="https://images.unsplash.com/photo-1546708973-b339540b5162?auto=format&fit=crop&w=700&q=80"
                 alt="Scenic Sri Lanka hills"
+                loading="lazy"
               />
             </div>
             <div className="story-badge-card glass-panel">
@@ -218,6 +219,7 @@ export default function AboutUs({ setActiveTab }) {
                   src={member.image}
                   alt={member.name}
                   className="team-image"
+                  loading="lazy"
                 />
                 <div className="team-overlay" />
               </div>
