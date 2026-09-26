@@ -1,54 +1,66 @@
-import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Send, MessageSquare, CheckCircle, ExternalLink, ChevronDown } from 'lucide-react';
-import './ContactUs.css';
+import React, { useState } from "react";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Send,
+  MessageSquare,
+  CheckCircle,
+  ChevronDown,
+} from "lucide-react";
+import "./ContactUs.css";
 
 export default function ContactUs() {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    service: 'Travels',
-    subject: '',
-    message: '',
+    name: "",
+    email: "",
+    phone: "",
+    service: "Travels",
+    subject: "",
+    message: "",
   });
 
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [ownerContact, setOwnerContact] = useState({
-    email: 'owner@example.com',
-    phone: '1234567890',
+    email: "owner@example.com",
+    phone: "94768141512", // Standard format: Country Code + Digits (e.g. 94771234567 or 15558904820)
   });
 
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownOptions = [
-    { value: 'Travels', label: 'Travels (Holiday Packages & Stays)' },
-    // { value: 'Rent a Car', label: 'Rent a Car (Premium Car Rentals)' },
-    { value: 'Air Ticketing', label: 'Air Ticketing (Flight Reservation)' }
+    { value: "Travels", label: "Travels (Holiday Packages & Stays)" },
+    { value: "Air Ticketing", label: "Air Ticketing (Flight Reservation)" },
   ];
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  // Strips any spaces, dashes, or leading plus signs
+  const getCleanPhoneNumber = (phone) => {
+    return phone.replace(/[^0-9]/g, "");
+  };
+
+  // Direct WhatsApp chat without filling form
+  const handleDirectWhatsAppChat = () => {
+    const defaultText = `Hello Zenith Tours! 👋\nI am browsing your website and would like to inquire about your travel packages and services.`;
+    const cleanNumber = getCleanPhoneNumber(ownerContact.phone);
+    const url = `https://wa.me/${cleanNumber}?text=${encodeURIComponent(defaultText)}`;
+    window.open(url, "_blank", "noopener,noreferrer");
+  };
+
+  // Submit via FormSubmit API
   const handleSubmitInquiry = async (e) => {
     e.preventDefault();
     setSubmitting(true);
 
-    const messageTemplate = `New Inquiry for Zenith Tours:\n` +
-      `---------------------------------\n` +
-      `👤 Name: ${formData.name}\n` +
-      `📧 Email: ${formData.email}\n` +
-      `📞 Phone: ${formData.phone}\n` +
-      `🏷️ Category: ${formData.service}\n` +
-      `📌 Subject: ${formData.subject}\n` +
-      `💬 Message: ${formData.message}`;
-
     try {
       await fetch(`https://formsubmit.co/ajax/${ownerContact.email}`, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
+          "Content-Type": "application/json",
+          Accept: "application/json",
         },
         body: JSON.stringify({
           Name: formData.name,
@@ -57,47 +69,62 @@ export default function ContactUs() {
           ServiceCategory: formData.service,
           Subject: formData.subject,
           Message: formData.message,
-          _subject: `Zenith Tours Inquiry: ${formData.service} - ${formData.subject}`
-        })
+          _subject: `Zenith Tours Inquiry: ${formData.service} - ${formData.subject}`,
+        }),
       });
     } catch (err) {
-      console.warn("Email API submission failed, continuing to user confirmation dialog.", err);
+      console.warn(
+        "Email API submission failed, continuing to modal fallback.",
+        err,
+      );
     }
 
     setSubmitting(false);
     setSubmitted(true);
   };
 
+  // Redirect after form submission with user payload
   const handleWhatsAppRedirect = () => {
-    const whatsappMessage = `Hello, I just submitted an inquiry on Zenith Tours:\n\n` +
-      `*Category:* ${formData.service}\n` +
-      `*Name:* ${formData.name}\n` +
-      `*Email:* ${formData.email}\n` +
-      `*Phone:* ${formData.phone}\n` +
-      `*Subject:* ${formData.subject}\n` +
-      `*Message:* ${formData.message}`;
+    const whatsappMessage =
+      `Hello Zenith Tours, I just submitted an inquiry on your website:\n\n` +
+      `🏷️ *Category:* ${formData.service}\n` +
+      `👤 *Name:* ${formData.name}\n` +
+      `📧 *Email:* ${formData.email}\n` +
+      `📞 *Phone:* ${formData.phone}\n` +
+      `📌 *Subject:* ${formData.subject}\n` +
+      `💬 *Message:* ${formData.message}`;
 
-    const encodedText = encodeURIComponent(whatsappMessage);
-    const url = `https://wa.me/${ownerContact.phone}?text=${encodedText}`;
-    window.open(url, '_blank');
+    const cleanNumber = getCleanPhoneNumber(ownerContact.phone);
+    const url = `https://wa.me/${cleanNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+    window.open(url, "_blank", "noopener,noreferrer");
   };
 
   const handleEmailMailto = () => {
-    const mailtoSubject = encodeURIComponent(`Zenith Tours Inquiry: ${formData.service} - ${formData.subject}`);
-    const mailtoBody = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nCategory: ${formData.service}\n\nMessage:\n${formData.message}`);
+    const mailtoSubject = encodeURIComponent(
+      `Zenith Tours Inquiry: ${formData.service} - ${formData.subject}`,
+    );
+    const mailtoBody = encodeURIComponent(
+      `Name: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nCategory: ${formData.service}\n\nMessage:\n${formData.message}`,
+    );
     const url = `mailto:${ownerContact.email}?subject=${mailtoSubject}&body=${mailtoBody}`;
-    window.open(url, '_blank');
+    window.open(url, "_blank");
   };
 
   return (
     <div className="contact-screen animate-fadeIn">
-      {/* Hero Banner - Matching Travels Page */}
+      {/* Hero Banner */}
       <section className="contact-hero-banner">
         <div className="hero-overlay" />
         <div className="hero-content container">
           <span className="hero-badge badge badge-indigo">Connect With Us</span>
-          <h1 className="hero-title">Let's Plan Your <span className="text-gradient">Next Chapter</span></h1>
-          <p className="hero-subtitle">Have questions about our travel packages, car fleet, or flight details? Send us an inquiry and our desk will contact you immediately.</p>
+          <h1 className="hero-title">
+            Let's Plan Your <span className="text-gradient">Next Chapter</span>
+          </h1>
+          <p className="hero-subtitle">
+            Have questions about our travel packages, car fleet, or flight
+            details? Send us an inquiry and our desk will contact you
+            immediately.
+          </p>
         </div>
       </section>
 
@@ -106,14 +133,45 @@ export default function ContactUs() {
           {/* Contact Details Card */}
           <div className="contact-info-panel glass-panel">
             <h2 className="section-title">Contact Info</h2>
-            <p className="panel-desc">Reach out directly via phone or email, or drop by our global headquarters office.</p>
+            <p className="panel-desc">
+              Reach out directly via WhatsApp, phone, or email, or drop by our
+              headquarters.
+            </p>
 
             <div className="contact-info-list">
+              {/* WhatsApp Quick Chat Card */}
+              <div
+                className="info-item info-item-clickable"
+                onClick={handleDirectWhatsAppChat}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ")
+                    handleDirectWhatsAppChat();
+                }}
+              >
+                <div className="info-icon-wrapper whatsapp-icon-bg">
+                  <MessageSquare size={20} />
+                </div>
+                <div className="info-meta">
+                  <div className="info-header-row">
+                    <h4>WhatsApp Chat</h4>
+                    <span className="badge-fast">Fastest Response</span>
+                  </div>
+                  <p className="whatsapp-highlight">
+                    +{getCleanPhoneNumber(ownerContact.phone)}
+                  </p>
+                  <p className="chat-prompt">
+                    Click to start direct chat &rarr;
+                  </p>
+                </div>
+              </div>
+
               <div className="info-item">
                 <div className="info-icon-wrapper">
                   <Phone size={20} />
                 </div>
-                <div>
+                <div className="info-meta">
                   <h4>Call Concierge</h4>
                   <p>+1 (555) 890-4820</p>
                   <p>Mon - Sun, 24 Hours</p>
@@ -124,7 +182,7 @@ export default function ContactUs() {
                 <div className="info-icon-wrapper">
                   <Mail size={20} />
                 </div>
-                <div>
+                <div className="info-meta">
                   <h4>General Inquiries</h4>
                   <p>support@zenithtours.com</p>
                   <p>bookings@zenithtours.com</p>
@@ -135,7 +193,7 @@ export default function ContactUs() {
                 <div className="info-icon-wrapper">
                   <MapPin size={20} />
                 </div>
-                <div>
+                <div className="info-meta">
                   <h4>Headquarters Office</h4>
                   <p>742 Evergreen Terrace</p>
                   <p>Suite 100, New York, NY</p>
@@ -143,27 +201,37 @@ export default function ContactUs() {
               </div>
             </div>
 
+            {/* Owner Configuration Dashboard */}
             <div className="owner-config glass-panel">
               <h4>💡 Owner Notification Config</h4>
-              <p>Setup your custom notification channels below to receive customer inquiries:</p>
+              <p>
+                Setup your custom notification channels below to receive
+                customer inquiries:
+              </p>
 
               <div className="config-form-group">
                 <label>Owner Email</label>
                 <input
                   type="email"
                   value={ownerContact.email}
-                  onChange={(e) => setOwnerContact({ ...ownerContact, email: e.target.value })}
+                  onChange={(e) =>
+                    setOwnerContact({ ...ownerContact, email: e.target.value })
+                  }
                   placeholder="owner@example.com"
                 />
               </div>
 
               <div className="config-form-group">
-                <label>Owner WhatsApp (digits only, e.g. 1234567890)</label>
+                <label>
+                  Owner WhatsApp (Country code + number, digits only)
+                </label>
                 <input
                   type="text"
                   value={ownerContact.phone}
-                  onChange={(e) => setOwnerContact({ ...ownerContact, phone: e.target.value })}
-                  placeholder="1234567890"
+                  onChange={(e) =>
+                    setOwnerContact({ ...ownerContact, phone: e.target.value })
+                  }
+                  placeholder="e.g. 94771234567 or 15558904820"
                 />
               </div>
             </div>
@@ -172,7 +240,10 @@ export default function ContactUs() {
           {/* Inquiry Form */}
           <div className="contact-form-panel glass-panel">
             <h2 className="section-title">Submit an Inquiry</h2>
-            <p className="panel-desc">Select the appropriate department, fill details, and get notified instantly.</p>
+            <p className="panel-desc">
+              Select the appropriate department, fill details, and get notified
+              instantly.
+            </p>
 
             <form onSubmit={handleSubmitInquiry} className="inquiry-form">
               <div className="form-group">
@@ -221,16 +292,19 @@ export default function ContactUs() {
                 <div className="custom-dropdown-container">
                   <button
                     type="button"
-                    className={`form-control custom-dropdown-trigger ${dropdownOpen ? 'open' : ''}`}
+                    className={`form-control custom-dropdown-trigger ${dropdownOpen ? "open" : ""}`}
                     onClick={() => setDropdownOpen(!dropdownOpen)}
                     onBlur={() => setTimeout(() => setDropdownOpen(false), 200)}
                   >
                     <span>
-                      {formData.service === 'Travels' ? 'Travels (Holiday Packages & Stays)' :
-                        formData.service === 'Rent a Car' ? 'Rent a Car (Premium Car Rentals)' :
-                          'Air Ticketing (Flight Reservation)'}
+                      {formData.service === "Travels"
+                        ? "Travels (Holiday Packages & Stays)"
+                        : "Air Ticketing (Flight Reservation)"}
                     </span>
-                    <ChevronDown className={`dropdown-chevron ${dropdownOpen ? 'rotated' : ''}`} size={18} />
+                    <ChevronDown
+                      className={`dropdown-chevron ${dropdownOpen ? "rotated" : ""}`}
+                      size={18}
+                    />
                   </button>
 
                   {dropdownOpen && (
@@ -239,7 +313,7 @@ export default function ContactUs() {
                         <button
                           key={opt.value}
                           type="button"
-                          className={`custom-dropdown-item ${formData.service === opt.value ? 'selected' : ''}`}
+                          className={`custom-dropdown-item ${formData.service === opt.value ? "selected" : ""}`}
                           onClick={() => {
                             setFormData({ ...formData, service: opt.value });
                             setDropdownOpen(false);
@@ -279,7 +353,11 @@ export default function ContactUs() {
                 ></textarea>
               </div>
 
-              <button type="submit" className="btn btn-primary submit-inquiry-btn" disabled={submitting}>
+              <button
+                type="submit"
+                className="btn btn-primary submit-inquiry-btn"
+                disabled={submitting}
+              >
                 {submitting ? (
                   <>
                     <div className="spinner-sm" />
@@ -296,6 +374,17 @@ export default function ContactUs() {
           </div>
         </div>
 
+        {/* Floating WhatsApp Action Button */}
+        <button
+          className="floating-whatsapp-btn"
+          onClick={handleDirectWhatsAppChat}
+          title="Chat directly on WhatsApp"
+          aria-label="Chat directly on WhatsApp"
+        >
+          <MessageSquare size={26} />
+          <span className="floating-tooltip">Chat on WhatsApp</span>
+        </button>
+
         {/* Submission Success Modal */}
         {submitted && (
           <div className="modal-overlay">
@@ -305,18 +394,30 @@ export default function ContactUs() {
               </div>
 
               <h2 className="modal-title">Inquiry Submitted!</h2>
-              <p className="modal-subtitle">We have successfully registered your inquiry regarding <strong>{formData.service}</strong>.</p>
+              <p className="modal-subtitle">
+                We have successfully registered your inquiry regarding{" "}
+                <strong>{formData.service}</strong>.
+              </p>
 
               <div className="notification-options glass-panel">
-                <p className="notif-explain">To guarantee the owner receives your inquiry instantly, please select one of the direct notify methods below:</p>
+                <p className="notif-explain">
+                  To receive an immediate response, notify our booking desk
+                  directly:
+                </p>
 
                 <div className="modal-actions-row">
-                  <button onClick={handleWhatsAppRedirect} className="btn btn-primary whatsapp-btn">
+                  <button
+                    onClick={handleWhatsAppRedirect}
+                    className="btn btn-primary whatsapp-btn"
+                  >
                     <MessageSquare size={18} />
                     <span>Send via WhatsApp</span>
                   </button>
 
-                  <button onClick={handleEmailMailto} className="btn btn-secondary email-btn">
+                  <button
+                    onClick={handleEmailMailto}
+                    className="btn btn-secondary email-btn"
+                  >
                     <Mail size={18} />
                     <span>Open Email Client</span>
                   </button>
@@ -328,12 +429,12 @@ export default function ContactUs() {
                 onClick={() => {
                   setSubmitted(false);
                   setFormData({
-                    name: '',
-                    email: '',
-                    phone: '',
-                    service: 'Travels',
-                    subject: '',
-                    message: '',
+                    name: "",
+                    email: "",
+                    phone: "",
+                    service: "Travels",
+                    subject: "",
+                    message: "",
                   });
                 }}
               >
