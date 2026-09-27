@@ -1,5 +1,16 @@
 import React, { useState } from 'react';
-import { Plane, Calendar, User, Search, MapPin, ArrowRightLeft, Clock, ShieldCheck, HelpCircle } from 'lucide-react';
+import {
+  Plane,
+  Calendar,
+  User,
+  Search,
+  MapPin,
+  ArrowRightLeft,
+  Clock,
+  ShieldCheck,
+  HelpCircle,
+  X,
+} from 'lucide-react';
 import './AirTicketing.css';
 
 export default function AirTicketing() {
@@ -116,19 +127,22 @@ export default function AirTicketing() {
       return;
     }
 
-    const message = `Hello, I'd like to book a flight through Zenith Tours.\n` +
-                    `✈️ Airline: ${selectedFlight.airline}\n` +
-                    `📍 Route: ${searchParams.from} to ${searchParams.to}\n` +
-                    `📅 Date: ${searchParams.departDate} (${tripType})\n` +
-                    `💺 Cabin Class: ${searchParams.cabinClass}\n` +
-                    `👤 Passenger: ${passengerDetails.fullName} (Passport: ${passengerDetails.passport})\n` +
-                    `💰 Price: $${selectedFlight.price} (${searchParams.passengers} pax)\n` +
-                    `Please finalize my ticketing process.`;
+    const message =
+      `Hello, I'd like to book a flight through Zenith Tours.\n` +
+      `✈️ Airline: ${selectedFlight.airline}\n` +
+      `📍 Route: ${searchParams.from} to ${searchParams.to}\n` +
+      `📅 Date: ${searchParams.departDate} (${tripType})\n` +
+      `💺 Cabin Class: ${searchParams.cabinClass}\n` +
+      `👤 Passenger: ${passengerDetails.fullName} (Passport: ${passengerDetails.passport})\n` +
+      `💰 Price: $${selectedFlight.price} (${searchParams.passengers} pax)\n` +
+      `Please finalize my ticketing process.`;
 
     const encodedText = encodeURIComponent(message);
     const whatsappUrl = `https://wa.me/1234567890?text=${encodedText}`;
-    
-    alert(`Ticket Booking Initiated! Opening WhatsApp to send details to Zenith Tours ticketing agent...`);
+
+    alert(
+      `Ticket Booking Initiated! Opening WhatsApp to send details to Zenith Tours ticketing agent...`
+    );
     window.open(whatsappUrl, '_blank');
     setSelectedFlight(null);
   };
@@ -137,7 +151,7 @@ export default function AirTicketing() {
     setSearchParams({
       ...searchParams,
       from: searchParams.to,
-      to: searchParams.from
+      to: searchParams.from,
     });
   };
 
@@ -167,15 +181,15 @@ export default function AirTicketing() {
               <div className="trip-toggle">
                 <button
                   type="button"
-                  className={`toggle-btn ${tripType === "round-trip" ? "active" : ""}`}
-                  onClick={() => setTripType("round-trip")}
+                  className={`toggle-btn ${tripType === 'round-trip' ? 'active' : ''}`}
+                  onClick={() => setTripType('round-trip')}
                 >
                   Round Trip
                 </button>
                 <button
                   type="button"
-                  className={`toggle-btn ${tripType === "one-way" ? "active" : ""}`}
-                  onClick={() => setTripType("one-way")}
+                  className={`toggle-btn ${tripType === 'one-way' ? 'active' : ''}`}
+                  onClick={() => setTripType('one-way')}
                 >
                   One Way
                 </button>
@@ -191,6 +205,7 @@ export default function AirTicketing() {
                     })
                   }
                   className="cabin-select"
+                  aria-label="Select Cabin Class"
                 >
                   <option value="Economy">Economy</option>
                   <option value="Premium Economy">Premium Economy</option>
@@ -221,7 +236,7 @@ export default function AirTicketing() {
                   onClick={switchLocations}
                   aria-label="Switch destinations"
                 >
-                  <ArrowRightLeft size={14} />
+                  <ArrowRightLeft size={15} />
                 </button>
 
                 <div className="input-field">
@@ -251,10 +266,11 @@ export default function AirTicketing() {
                       })
                     }
                     required
+                    aria-label="Departure Date"
                   />
                 </div>
 
-                {tripType === "round-trip" && (
+                {tripType === 'round-trip' && (
                   <div className="input-field date-field">
                     <Calendar className="input-field-icon" size={16} />
                     <input
@@ -266,7 +282,8 @@ export default function AirTicketing() {
                           returnDate: e.target.value,
                         })
                       }
-                      required={tripType === "round-trip"}
+                      required={tripType === 'round-trip'}
+                      aria-label="Return Date"
                     />
                   </div>
                 )}
@@ -281,6 +298,7 @@ export default function AirTicketing() {
                         passengers: e.target.value,
                       })
                     }
+                    aria-label="Passengers"
                   >
                     <option value="1">1 Pax</option>
                     <option value="2">2 Pax</option>
@@ -316,7 +334,7 @@ export default function AirTicketing() {
             <div className="results-header">
               <h2>Available Flights ({flights.length})</h2>
               <p>
-                Fares showing for {searchParams.passengers} passenger(s) in{" "}
+                Fares showing for {searchParams.passengers} passenger(s) in{' '}
                 {searchParams.cabinClass}
               </p>
             </div>
@@ -328,7 +346,7 @@ export default function AirTicketing() {
                     <div className="airline-icon-holder">
                       <Plane className="airplane-card-icon" size={24} />
                     </div>
-                    <div>
+                    <div className="airline-meta">
                       <h3 className="airline-name">{flight.airline}</h3>
                       <span className="cabin-badge badge badge-indigo">
                         {searchParams.cabinClass}
@@ -341,7 +359,7 @@ export default function AirTicketing() {
                       <span className="time">{flight.departTime}</span>
                       <span className="airport">
                         {searchParams.from.substring(0, 3).toUpperCase() ||
-                          "DEP"}
+                          'DEP'}
                       </span>
                     </div>
 
@@ -358,21 +376,14 @@ export default function AirTicketing() {
                     <div className="time-block text-left">
                       <span className="time">{flight.arrivalTime}</span>
                       <span className="airport">
-                        {searchParams.to.substring(0, 3).toUpperCase() || "ARR"}
+                        {searchParams.to.substring(0, 3).toUpperCase() || 'ARR'}
                       </span>
                     </div>
                   </div>
 
-                  <div
-                    className="flight-details-info"
-                    style={{
-                      fontSize: "12px",
-                      color: "#888",
-                      padding: "8px 0",
-                    }}
-                  >
-                    <div>🧳 Baggage: {flight.baggage}</div>
-                    <div>✨ {flight.amenities}</div>
+                  <div className="flight-details-info">
+                    <span className="detail-pill">🧳 Baggage: {flight.baggage}</span>
+                    <span className="detail-pill">✨ {flight.amenities}</span>
                   </div>
 
                   <div className="flight-price-action">
@@ -381,7 +392,8 @@ export default function AirTicketing() {
                       <span className="price-term">Total fare</span>
                     </div>
                     <button
-                      className="btn btn-primary"
+                      type="button"
+                      className="btn btn-primary book-ticket-btn"
                       onClick={() => setSelectedFlight(flight)}
                     >
                       Book Ticket
@@ -399,30 +411,41 @@ export default function AirTicketing() {
         <div className="help-grid">
           <div className="help-card glass-panel">
             <ShieldCheck className="help-icon" size={28} />
-            <h3>Travel Guarantee</h3>
-            <p>
-              100% refund on flight cancellations or rescheduling requests done
-              24h prior to departure.
-            </p>
+            <div>
+              <h3>Travel Guarantee</h3>
+              <p>
+                100% refund on flight cancellations or rescheduling requests done
+                24h prior to departure.
+              </p>
+            </div>
           </div>
           <div className="help-card glass-panel">
             <HelpCircle className="help-icon" size={28} />
-            <h3>24/7 Ticketing Desk</h3>
-            <p>
-              Direct contact with flight agents to handle changes, upgrades,
-              baggage additions, and meals.
-            </p>
+            <div>
+              <h3>24/7 Ticketing Desk</h3>
+              <p>
+                Direct contact with flight agents to handle changes, upgrades,
+                baggage additions, and meals.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Passenger Booking Modal */}
       {selectedFlight && (
-        <div className="modal-overlay">
+        <div
+          className="modal-overlay"
+          onClick={(e) => {
+            if (e.target === e.currentTarget) setSelectedFlight(null);
+          }}
+        >
           <div className="modal-content glass-panel animate-fadeIn">
             <button
+              type="button"
               className="modal-close-btn"
               onClick={() => setSelectedFlight(null)}
+              aria-label="Close modal"
             >
               <X size={20} />
             </button>
@@ -482,7 +505,7 @@ export default function AirTicketing() {
                 <div className="summary-row">
                   <span>Route:</span>
                   <span className="summary-value">
-                    {searchParams.from.toUpperCase()} to{" "}
+                    {searchParams.from.toUpperCase()} to{' '}
                     {searchParams.to.toUpperCase()}
                   </span>
                 </div>
