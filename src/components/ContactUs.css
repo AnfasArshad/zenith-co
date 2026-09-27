@@ -1,4 +1,3 @@
-/* Contact Hero Banner */
 .contact-hero-banner {
   position: relative;
   min-height: 480px;
@@ -6,8 +5,9 @@
   align-items: center;
   justify-content: center;
   padding: 80px 20px;
-  background-image: linear-gradient(rgba(15, 23, 42, 0.35), rgba(15, 23, 42, 0.65)),
-    url('https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=1920&q=80');
+  background-image:
+    linear-gradient(rgba(15, 23, 42, 0.45), rgba(15, 23, 42, 0.72)),
+    url("https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=1920&q=80");
   background-size: cover;
   background-position: center;
   text-align: center;
@@ -20,7 +20,11 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at center, transparent 30%, var(--bg-primary, #0f172a) 90%);
+  background: radial-gradient(
+    circle at center,
+    transparent 30%,
+    var(--bg-primary, #0f172a) 90%
+  );
   pointer-events: none;
 }
 
@@ -31,10 +35,32 @@
   flex-direction: column;
   align-items: center;
   max-width: 800px;
+  padding: 20px 24px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(15, 23, 42, 0.45) 0%,
+    transparent 75%
+  );
+  border-radius: var(--radius-lg, 16px);
 }
 
-.hero-badge {
-  margin-bottom: 20px;
+.hero-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 18px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 9999px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #ffffff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  margin-bottom: 18px;
 }
 
 .hero-title {
@@ -45,6 +71,18 @@
   color: #ffffff;
   text-shadow: 0 2px 10px rgba(15, 23, 42, 0.4);
   line-height: 1.15;
+}
+
+/* Add right after .hero-title in ContactUs.css */
+.hero-title .text-gradient {
+  background: linear-gradient(135deg, #a5b4fc 0%, #f472b6 50%, #38bdf8 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  font-weight: 800;
+  filter: drop-shadow(0 2px 8px rgba(15, 23, 42, 0.8))
+    drop-shadow(0 4px 16px rgba(0, 0, 0, 0.6));
 }
 
 .hero-subtitle {
@@ -113,7 +151,9 @@
   gap: 16px;
   padding: 10px 12px;
   border-radius: var(--radius-md, 10px);
-  transition: background 0.2s ease, transform 0.2s ease;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
 }
 
 .info-meta {
@@ -217,7 +257,9 @@
   box-shadow: 0 8px 24px rgba(18, 140, 126, 0.38);
   cursor: pointer;
   z-index: 999;
-  transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.25s ease;
+  transition:
+    transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    box-shadow 0.25s ease;
 }
 
 .floating-whatsapp-btn:hover {
@@ -614,12 +656,18 @@
 
 /* Animations */
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* ===== RESPONSIVE BREAKPOINTS ===== */

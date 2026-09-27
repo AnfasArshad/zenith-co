@@ -116,7 +116,7 @@ export default function ContactUs() {
       <section className="contact-hero-banner">
         <div className="hero-overlay" />
         <div className="hero-content container">
-          <span className="hero-badge badge badge-indigo">Connect With Us</span>
+          <span className="hero-badge-pill">CONNECT WITH US</span>
           <h1 className="hero-title">
             Let's Plan Your <span className="text-gradient">Next Chapter</span>
           </h1>

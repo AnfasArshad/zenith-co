@@ -147,118 +147,160 @@ export default function AirTicketing() {
       <section className="ticketing-hero">
         <div className="hero-overlay" />
         <div className="hero-content container">
-          <span className="badge badge-pink">Global Airways Portal</span>
-          <h1 className="ticketing-title">Seamless Flights. <br /><span className="text-gradient">Unlimited Sky.</span></h1>
-          <p className="ticketing-subtitle">Compare and book airline tickets across 500+ commercial carriers instantly. Best price guarantee, 24/7 flight support, and easy upgrades.</p>
-          
+          <span className="hero-badge-pill">GLOBAL AIRWAYS PORTAL</span>
+          <h1 className="ticketing-title">
+            Seamless Flights. <br />
+            <span className="text-gradient">Unlimited Sky.</span>
+          </h1>
+          <p className="ticketing-subtitle">
+            Compare and book airline tickets across 500+ commercial carriers
+            instantly. Best price guarantee, 24/7 flight support, and easy
+            upgrades.
+          </p>
+
           {/* Ticket Search Console */}
-          <form onSubmit={handleSearchSubmit} className="flight-console-panel glass-panel">
-          <div className="console-row-top">
-            <div className="trip-toggle">
-              <button 
-                type="button" 
-                className={`toggle-btn ${tripType === 'round-trip' ? 'active' : ''}`}
-                onClick={() => setTripType('round-trip')}
-              >
-                Round Trip
-              </button>
-              <button 
-                type="button" 
-                className={`toggle-btn ${tripType === 'one-way' ? 'active' : ''}`}
-                onClick={() => setTripType('one-way')}
-              >
-                One Way
-              </button>
-            </div>
-
-            <div className="cabin-select-wrapper">
-              <select 
-                value={searchParams.cabinClass}
-                onChange={(e) => setSearchParams({...searchParams, cabinClass: e.target.value})}
-                className="cabin-select"
-              >
-                <option value="Economy">Economy</option>
-                <option value="Premium Economy">Premium Economy</option>
-                <option value="Business">Business</option>
-                <option value="First Class">First Class</option>
-              </select>
-            </div>
-          </div>
-
-          <div className="console-inputs">
-            <div className="input-group-location flex-1">
-              <div className="input-field">
-                <MapPin className="input-field-icon" size={16} />
-                <input 
-                  type="text" 
-                  placeholder="Leaving from..." 
-                  value={searchParams.from}
-                  onChange={(e) => setSearchParams({...searchParams, from: e.target.value})}
-                  required
-                />
-              </div>
-              
-              <button type="button" className="switch-locations-btn" onClick={switchLocations} aria-label="Switch destinations">
-                <ArrowRightLeft size={14} />
-              </button>
-
-              <div className="input-field">
-                <MapPin className="input-field-icon" size={16} />
-                <input 
-                  type="text" 
-                  placeholder="Going to..." 
-                  value={searchParams.to}
-                  onChange={(e) => setSearchParams({...searchParams, to: e.target.value})}
-                  required
-                />
-              </div>
-            </div>
-
-            <div className="input-group-dates flex-1">
-              <div className="input-field date-field">
-                <Calendar className="input-field-icon" size={16} />
-                <input 
-                  type="date" 
-                  value={searchParams.departDate}
-                  onChange={(e) => setSearchParams({...searchParams, departDate: e.target.value})}
-                  required
-                />
-              </div>
-
-              {tripType === 'round-trip' && (
-                <div className="input-field date-field">
-                  <Calendar className="input-field-icon" size={16} />
-                  <input 
-                    type="date" 
-                    value={searchParams.returnDate}
-                    onChange={(e) => setSearchParams({...searchParams, returnDate: e.target.value})}
-                    required={tripType === 'round-trip'}
-                  />
-                </div>
-              )}
-
-              <div className="input-field passenger-field">
-                <User className="input-field-icon" size={16} />
-                <select 
-                  value={searchParams.passengers}
-                  onChange={(e) => setSearchParams({...searchParams, passengers: e.target.value})}
+          <form
+            onSubmit={handleSearchSubmit}
+            className="flight-console-panel glass-panel"
+          >
+            <div className="console-row-top">
+              <div className="trip-toggle">
+                <button
+                  type="button"
+                  className={`toggle-btn ${tripType === "round-trip" ? "active" : ""}`}
+                  onClick={() => setTripType("round-trip")}
                 >
-                  <option value="1">1 Pax</option>
-                  <option value="2">2 Pax</option>
-                  <option value="4">4 Pax</option>
-                  <option value="6">6 Pax</option>
+                  Round Trip
+                </button>
+                <button
+                  type="button"
+                  className={`toggle-btn ${tripType === "one-way" ? "active" : ""}`}
+                  onClick={() => setTripType("one-way")}
+                >
+                  One Way
+                </button>
+              </div>
+
+              <div className="cabin-select-wrapper">
+                <select
+                  value={searchParams.cabinClass}
+                  onChange={(e) =>
+                    setSearchParams({
+                      ...searchParams,
+                      cabinClass: e.target.value,
+                    })
+                  }
+                  className="cabin-select"
+                >
+                  <option value="Economy">Economy</option>
+                  <option value="Premium Economy">Premium Economy</option>
+                  <option value="Business">Business</option>
+                  <option value="First Class">First Class</option>
                 </select>
               </div>
             </div>
-          </div>
 
-          <button type="submit" className="btn btn-primary submit-flight-search">
-            <Search size={18} />
-            <span>Search Flights</span>
-          </button>
-        </form>
-      </div>
-    </section>
+            <div className="console-inputs">
+              <div className="input-group-location flex-1">
+                <div className="input-field">
+                  <MapPin className="input-field-icon" size={16} />
+                  <input
+                    type="text"
+                    placeholder="Leaving from..."
+                    value={searchParams.from}
+                    onChange={(e) =>
+                      setSearchParams({ ...searchParams, from: e.target.value })
+                    }
+                    required
+                  />
+                </div>
+
+                <button
+                  type="button"
+                  className="switch-locations-btn"
+                  onClick={switchLocations}
+                  aria-label="Switch destinations"
+                >
+                  <ArrowRightLeft size={14} />
+                </button>
+
+                <div className="input-field">
+                  <MapPin className="input-field-icon" size={16} />
+                  <input
+                    type="text"
+                    placeholder="Going to..."
+                    value={searchParams.to}
+                    onChange={(e) =>
+                      setSearchParams({ ...searchParams, to: e.target.value })
+                    }
+                    required
+                  />
+                </div>
+              </div>
+
+              <div className="input-group-dates flex-1">
+                <div className="input-field date-field">
+                  <Calendar className="input-field-icon" size={16} />
+                  <input
+                    type="date"
+                    value={searchParams.departDate}
+                    onChange={(e) =>
+                      setSearchParams({
+                        ...searchParams,
+                        departDate: e.target.value,
+                      })
+                    }
+                    required
+                  />
+                </div>
+
+                {tripType === "round-trip" && (
+                  <div className="input-field date-field">
+                    <Calendar className="input-field-icon" size={16} />
+                    <input
+                      type="date"
+                      value={searchParams.returnDate}
+                      onChange={(e) =>
+                        setSearchParams({
+                          ...searchParams,
+                          returnDate: e.target.value,
+                        })
+                      }
+                      required={tripType === "round-trip"}
+                    />
+                  </div>
+                )}
+
+                <div className="input-field passenger-field">
+                  <User className="input-field-icon" size={16} />
+                  <select
+                    value={searchParams.passengers}
+                    onChange={(e) =>
+                      setSearchParams({
+                        ...searchParams,
+                        passengers: e.target.value,
+                      })
+                    }
+                  >
+                    <option value="1">1 Pax</option>
+                    <option value="2">2 Pax</option>
+                    <option value="4">4 Pax</option>
+                    <option value="6">6 Pax</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <button
+              type="submit"
+              className="btn btn-primary submit-flight-search"
+            >
+              <Search size={18} />
+              <span>Search Flights</span>
+            </button>
+          </form>
+        </div>
+      </section>
 
       {/* Flight Search Results */}
       <section className="flight-results container">
@@ -273,9 +315,12 @@ export default function AirTicketing() {
           <div className="results-wrapper animate-fadeIn">
             <div className="results-header">
               <h2>Available Flights ({flights.length})</h2>
-              <p>Fares showing for {searchParams.passengers} passenger(s) in {searchParams.cabinClass}</p>
+              <p>
+                Fares showing for {searchParams.passengers} passenger(s) in{" "}
+                {searchParams.cabinClass}
+              </p>
             </div>
-            
+
             <div className="flights-list">
               {flights.map((flight) => (
                 <div key={flight.id} className="flight-card glass-panel">
@@ -285,16 +330,21 @@ export default function AirTicketing() {
                     </div>
                     <div>
                       <h3 className="airline-name">{flight.airline}</h3>
-                      <span className="cabin-badge badge badge-indigo">{searchParams.cabinClass}</span>
+                      <span className="cabin-badge badge badge-indigo">
+                        {searchParams.cabinClass}
+                      </span>
                     </div>
                   </div>
 
                   <div className="flight-schedule-block">
                     <div className="time-block text-right">
                       <span className="time">{flight.departTime}</span>
-                      <span className="airport">{searchParams.from.substring(0, 3).toUpperCase() || 'DEP'}</span>
+                      <span className="airport">
+                        {searchParams.from.substring(0, 3).toUpperCase() ||
+                          "DEP"}
+                      </span>
                     </div>
-                    
+
                     <div className="route-connector">
                       <span className="duration">{flight.duration}</span>
                       <div className="connector-line">
@@ -307,11 +357,20 @@ export default function AirTicketing() {
 
                     <div className="time-block text-left">
                       <span className="time">{flight.arrivalTime}</span>
-                      <span className="airport">{searchParams.to.substring(0, 3).toUpperCase() || 'ARR'}</span>
+                      <span className="airport">
+                        {searchParams.to.substring(0, 3).toUpperCase() || "ARR"}
+                      </span>
                     </div>
                   </div>
 
-                  <div className="flight-details-info" style={{fontSize: '12px', color: '#888', padding: '8px 0'}}>
+                  <div
+                    className="flight-details-info"
+                    style={{
+                      fontSize: "12px",
+                      color: "#888",
+                      padding: "8px 0",
+                    }}
+                  >
                     <div>🧳 Baggage: {flight.baggage}</div>
                     <div>✨ {flight.amenities}</div>
                   </div>
@@ -321,7 +380,7 @@ export default function AirTicketing() {
                       <span className="price">${flight.price}</span>
                       <span className="price-term">Total fare</span>
                     </div>
-                    <button 
+                    <button
                       className="btn btn-primary"
                       onClick={() => setSelectedFlight(flight)}
                     >
@@ -341,12 +400,18 @@ export default function AirTicketing() {
           <div className="help-card glass-panel">
             <ShieldCheck className="help-icon" size={28} />
             <h3>Travel Guarantee</h3>
-            <p>100% refund on flight cancellations or rescheduling requests done 24h prior to departure.</p>
+            <p>
+              100% refund on flight cancellations or rescheduling requests done
+              24h prior to departure.
+            </p>
           </div>
           <div className="help-card glass-panel">
             <HelpCircle className="help-icon" size={28} />
             <h3>24/7 Ticketing Desk</h3>
-            <p>Direct contact with flight agents to handle changes, upgrades, baggage additions, and meals.</p>
+            <p>
+              Direct contact with flight agents to handle changes, upgrades,
+              baggage additions, and meals.
+            </p>
           </div>
         </div>
       </section>
@@ -355,62 +420,91 @@ export default function AirTicketing() {
       {selectedFlight && (
         <div className="modal-overlay">
           <div className="modal-content glass-panel animate-fadeIn">
-            <button className="modal-close-btn" onClick={() => setSelectedFlight(null)}>
+            <button
+              className="modal-close-btn"
+              onClick={() => setSelectedFlight(null)}
+            >
               <X size={20} />
             </button>
-            
+
             <div className="modal-header">
               <h2 className="modal-title">Passenger Details</h2>
-              <p className="modal-subtitle">Flight Reservation with {selectedFlight.airline}</p>
+              <p className="modal-subtitle">
+                Flight Reservation with {selectedFlight.airline}
+              </p>
             </div>
 
             <form onSubmit={handleBookFlight} className="modal-form">
               <div className="form-group">
                 <label className="form-label">Full Name (as in Passport)</label>
-                <input 
-                  type="text" 
-                  placeholder="Johnathan Doe" 
+                <input
+                  type="text"
+                  placeholder="Johnathan Doe"
                   className="form-control"
                   required
                   value={passengerDetails.fullName}
-                  onChange={(e) => setPassengerDetails({...passengerDetails, fullName: e.target.value})}
+                  onChange={(e) =>
+                    setPassengerDetails({
+                      ...passengerDetails,
+                      fullName: e.target.value,
+                    })
+                  }
                 />
               </div>
 
               <div className="form-group">
                 <label className="form-label">Passport Number</label>
-                <input 
-                  type="text" 
-                  placeholder="A1234567" 
+                <input
+                  type="text"
+                  placeholder="A1234567"
                   className="form-control"
                   required
                   value={passengerDetails.passport}
-                  onChange={(e) => setPassengerDetails({...passengerDetails, passport: e.target.value})}
+                  onChange={(e) =>
+                    setPassengerDetails({
+                      ...passengerDetails,
+                      passport: e.target.value,
+                    })
+                  }
                 />
               </div>
 
               <div className="ticket-summary glass-panel">
-                <div className="ticket-summary-header">Flight Details Summary</div>
+                <div className="ticket-summary-header">
+                  Flight Details Summary
+                </div>
                 <div className="summary-row">
                   <span>Airline:</span>
-                  <span className="summary-value">{selectedFlight.airline}</span>
+                  <span className="summary-value">
+                    {selectedFlight.airline}
+                  </span>
                 </div>
                 <div className="summary-row">
                   <span>Route:</span>
-                  <span className="summary-value">{searchParams.from.toUpperCase()} to {searchParams.to.toUpperCase()}</span>
+                  <span className="summary-value">
+                    {searchParams.from.toUpperCase()} to{" "}
+                    {searchParams.to.toUpperCase()}
+                  </span>
                 </div>
                 <div className="summary-row">
                   <span>Cabin / Pax:</span>
-                  <span className="summary-value">{searchParams.cabinClass} / {searchParams.passengers} Pax</span>
+                  <span className="summary-value">
+                    {searchParams.cabinClass} / {searchParams.passengers} Pax
+                  </span>
                 </div>
                 <div className="summary-row divider" />
                 <div className="summary-row total-row">
                   <span>Total Amount</span>
-                  <span className="text-gradient">${selectedFlight.price * parseInt(searchParams.passengers)}</span>
+                  <span className="text-gradient">
+                    ${selectedFlight.price * parseInt(searchParams.passengers)}
+                  </span>
                 </div>
               </div>
 
-              <button type="submit" className="btn btn-primary w-full submit-booking-btn">
+              <button
+                type="submit"
+                className="btn btn-primary w-full submit-booking-btn"
+              >
                 <span>Book Flight via WhatsApp</span>
               </button>
             </form>
