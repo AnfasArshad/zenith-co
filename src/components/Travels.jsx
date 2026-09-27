@@ -1,98 +1,175 @@
-import React, { useState } from 'react';
-import { Search, MapPin, Calendar, Users, Star, ArrowRight, Compass, Shield, Award } from 'lucide-react';
-import './Travels.css';
+import React, { useState } from "react";
+import {
+  Search,
+  MapPin,
+  Calendar,
+  Users,
+  Star,
+  ArrowRight,
+  Compass,
+  Shield,
+  Award,
+  MessageSquare,
+} from "lucide-react";
+import "./Travels.css";
+
+// Centralized owner contact config (Digits only, country code included)
+const OWNER_WHATSAPP = "94768141512";
 
 export default function Travels() {
   const [searchQuery, setSearchQuery] = useState({
-    destination: '',
-    date: '',
-    guests: '2',
+    destination: "",
+    date: "",
+    guests: "2",
   });
 
   const destinations = [
     {
       id: 1,
-      title: 'Sigiriya Rock Fortress Trek',
-      location: 'Sigiriya, Sri Lanka',
-      image: 'https://images.unsplash.com/photo-1580794749460-76f97b7180d8?auto=format&fit=crop&w=600&q=80',
-      price: '$620',
-      rating: '4.96',
-      duration: '3 Days / 2 Nights',
-      tag: 'Historical',
-      badgeColor: 'tag-indigo',
-      highlights: 'Ancient Rock Palace, Frescoes, Sunrise Summit Climb',
+      title: "Sigiriya Rock Fortress Trek",
+      location: "Sigiriya, Sri Lanka",
+      image:
+        "https://images.unsplash.com/photo-1580794749460-76f97b7180d8?auto=format&fit=crop&w=600&q=80",
+      price: "$620",
+      rating: "4.96",
+      duration: "3 Days / 2 Nights",
+      tag: "Historical",
+      badgeColor: "tag-indigo",
+      highlights: "Ancient Rock Palace, Frescoes, Sunrise Summit Climb",
     },
     {
       id: 2,
-      title: 'Ella Hill Country Escape',
-      location: 'Ella, Sri Lanka',
-      image: 'https://images.unsplash.com/photo-1566296314736-6eaac1ca0cb9?auto=format&fit=crop&w=600&q=80',
-      price: '$540',
-      rating: '4.92',
-      duration: '4 Days / 3 Nights',
-      tag: 'Adventure',
-      badgeColor: 'tag-success',
-      highlights: 'Nine Arch Bridge, Little Adam\'s Peak, Scenic Train Ride',
+      title: "Ella Hill Country Escape",
+      location: "Ella, Sri Lanka",
+      image:
+        "https://images.unsplash.com/photo-1566296314736-6eaac1ca0cb9?auto=format&fit=crop&w=600&q=80",
+      price: "$540",
+      rating: "4.92",
+      duration: "4 Days / 3 Nights",
+      tag: "Adventure",
+      badgeColor: "tag-success",
+      highlights: "Nine Arch Bridge, Little Adam's Peak, Scenic Train Ride",
     },
     {
       id: 3,
-      title: 'Kandy Heritage Journey',
-      location: 'Kandy, Sri Lanka',
-      image: 'https://images.unsplash.com/photo-1642095012223-65ee6d570974?auto=format&fit=crop&w=600&q=80',
-      price: '$480',
-      rating: '4.90',
-      duration: '3 Days / 2 Nights',
-      tag: 'Historical',
-      badgeColor: 'tag-purple',
-      highlights: 'Temple of the Sacred Tooth Relic, Kandy Lake, Cultural Dance',
+      title: "Kandy Heritage Journey",
+      location: "Kandy, Sri Lanka",
+      image:
+        "https://images.unsplash.com/photo-1642095012223-65ee6d570974?auto=format&fit=crop&w=600&q=80",
+      price: "$480",
+      rating: "4.90",
+      duration: "3 Days / 2 Nights",
+      tag: "Historical",
+      badgeColor: "tag-purple",
+      highlights:
+        "Temple of the Sacred Tooth Relic, Kandy Lake, Cultural Dance",
     },
     {
       id: 4,
-      title: 'Galle Fort Coastal Getaway',
-      location: 'Galle, Sri Lanka',
-      image: 'https://images.unsplash.com/photo-1654561773591-57b9413c45c0?auto=format&fit=crop&w=600&q=80',
-      price: '$590',
-      rating: '4.94',
-      duration: '4 Days / 3 Nights',
-      tag: 'Romantic',
-      badgeColor: 'tag-danger',
-      highlights: 'Dutch Fort Ramparts, Lighthouse, Boutique Cafes',
+      title: "Galle Fort Coastal Getaway",
+      location: "Galle, Sri Lanka",
+      image:
+        "https://images.unsplash.com/photo-1654561773591-57b9413c45c0?auto=format&fit=crop&w=600&q=80",
+      price: "$590",
+      rating: "4.94",
+      duration: "4 Days / 3 Nights",
+      tag: "Romantic",
+      badgeColor: "tag-danger",
+      highlights: "Dutch Fort Ramparts, Lighthouse, Boutique Cafes",
     },
     {
       id: 5,
-      title: 'Nuwara Eliya Tea Country',
-      location: 'Nuwara Eliya, Sri Lanka',
-      image: 'https://images.unsplash.com/photo-1544451822-38e32b887c08?auto=format&fit=crop&w=600&q=80',
-      price: '$460',
-      rating: '4.89',
-      duration: '3 Days / 2 Nights',
-      tag: 'Luxury',
-      badgeColor: 'tag-warning',
-      highlights: 'Tea Estate Tours, Misty Mountains, Colonial Bungalows',
+      title: "Nuwara Eliya Tea Country",
+      location: "Nuwara Eliya, Sri Lanka",
+      image:
+        "https://images.unsplash.com/photo-1544451822-38e32b887c08?auto=format&fit=crop&w=600&q=80",
+      price: "$460",
+      rating: "4.89",
+      duration: "3 Days / 2 Nights",
+      tag: "Luxury",
+      badgeColor: "tag-warning",
+      highlights: "Tea Estate Tours, Misty Mountains, Colonial Bungalows",
     },
     {
       id: 6,
-      title: 'Yala Wildlife Safari',
-      location: 'Yala National Park, Sri Lanka',
-      image: 'https://images.unsplash.com/photo-1705936981588-a4192f66fcfb?auto=format&fit=crop&w=600&q=80',
-      price: '$710',
-      rating: '4.97',
-      duration: '2 Days / 1 Night',
-      tag: 'Adventure',
-      badgeColor: 'tag-pink',
-      highlights: 'Elephant Herds, Leopard Sightings, Jeep Safari',
+      title: "Yala Wildlife Safari",
+      location: "Yala National Park, Sri Lanka",
+      image:
+        "https://images.unsplash.com/photo-1705936981588-a4192f66fcfb?auto=format&fit=crop&w=600&q=80",
+      price: "$710",
+      rating: "4.97",
+      duration: "2 Days / 1 Night",
+      tag: "Adventure",
+      badgeColor: "tag-pink",
+      highlights: "Elephant Herds, Leopard Sightings, Jeep Safari",
     },
   ];
 
   const benefits = [
-    { icon: Compass, title: 'Tailored Itineraries', desc: 'Custom designs around your pace and preferences.' },
-    { icon: Shield, title: 'Secure Travel', desc: 'Comprehensive coverage, 24/7 on-road emergency response.' },
-    { icon: Award, title: 'Luxury Stays', desc: 'Handpicked verified 5-star villas and boutique hotels.' },
+    {
+      icon: Compass,
+      title: "Tailored Itineraries",
+      desc: "Custom designs around your pace and preferences.",
+    },
+    {
+      icon: Shield,
+      title: "Secure Travel",
+      desc: "Comprehensive coverage, 24/7 on-road emergency response.",
+    },
+    {
+      icon: Award,
+      title: "Luxury Stays",
+      desc: "Handpicked verified 5-star villas and boutique hotels.",
+    },
   ];
 
+  // Helper to trigger clean WhatsApp link
+  const openWhatsAppUrl = (message) => {
+    const cleanPhone = OWNER_WHATSAPP.replace(/[^0-9]/g, "");
+    const url = `https://wa.me/${cleanPhone}?text=${encodeURIComponent(message)}`;
+    window.open(url, "_blank", "noopener,noreferrer");
+  };
+
+  // 1. Search Bar Inquiry Redirect
   const handleSearchSubmit = (e) => {
     e.preventDefault();
-    alert(`Searching travels for: ${searchQuery.destination || 'Anywhere'} starting ${searchQuery.date || 'Anytime'} for ${searchQuery.guests} guests.`);
+
+    const dest = searchQuery.destination.trim() || "Anywhere in Sri Lanka";
+    const date = searchQuery.date
+      ? searchQuery.date
+      : "Flexible / To be confirmed";
+    const guestLabel =
+      searchQuery.guests === "1"
+        ? "1 Solo Traveler"
+        : searchQuery.guests === "2"
+          ? "2 Guests (Couple)"
+          : searchQuery.guests === "4"
+            ? "4 Guests (Family)"
+            : "8+ Group Voyagers";
+
+    const message =
+      `Hello Zenith Tours! ✈️\n` +
+      `I am looking to book a travel package through your website search:\n\n` +
+      `📍 *Destination:* ${dest}\n` +
+      `📅 *Date:* ${date}\n` +
+      `👥 *Travelers:* ${guestLabel}\n\n` +
+      `Could you provide itinerary availability and rates?`;
+
+    openWhatsAppUrl(message);
+  };
+
+  // 2. Individual Package Card Redirect
+  const handlePackageExplore = (packageItem) => {
+    const message =
+      `Hello Zenith Tours! 🌿\n` +
+      `I am interested in your package:\n\n` +
+      `🏷️ *Package:* ${packageItem.title}\n` +
+      `📍 *Location:* ${packageItem.location}\n` +
+      `⏱️ *Duration:* ${packageItem.duration}\n` +
+      `✨ *Highlights:* ${packageItem.highlights}\n\n` +
+      `Please share availability and customize this experience for me.`;
+
+    openWhatsAppUrl(message);
   };
 
   return (
@@ -144,7 +221,7 @@ export default function Travels() {
               {/* Destination Segment */}
               <div className="search-segment">
                 <div className="segment-icon-box">
-                  <MapPin size={20} className="search-field-icon" />
+                  <MapPin size={18} className="search-field-icon" />
                 </div>
                 <div className="input-texts">
                   <label htmlFor="search-dest">Where to?</label>
@@ -168,7 +245,7 @@ export default function Travels() {
               {/* Date Segment */}
               <div className="search-segment">
                 <div className="segment-icon-box">
-                  <Calendar size={20} className="search-field-icon" />
+                  <Calendar size={18} className="search-field-icon" />
                 </div>
                 <div className="input-texts">
                   <label htmlFor="search-date">When?</label>
@@ -188,7 +265,7 @@ export default function Travels() {
               {/* Guests Segment */}
               <div className="search-segment">
                 <div className="segment-icon-box">
-                  <Users size={20} className="search-field-icon" />
+                  <Users size={18} className="search-field-icon" />
                 </div>
                 <div className="input-texts">
                   <label htmlFor="search-guests">Travelers</label>
@@ -208,8 +285,12 @@ export default function Travels() {
               </div>
             </div>
 
-            {/* Submit Button */}
-            <button type="submit" className="search-submit-btn">
+            {/* Submit / WhatsApp Explore Button */}
+            <button
+              type="submit"
+              className="search-submit-btn"
+              title="Explore via WhatsApp"
+            >
               <Search size={18} />
               <span>Explore</span>
             </button>
@@ -218,7 +299,7 @@ export default function Travels() {
           {/* Trust Stats Row */}
           <div className="hero-stats-row">
             <div className="hero-stat">
-              <span className="hero-stat-value">50K+</span>
+              <span className="hero-stat-value">2K+</span>
               <span className="hero-stat-label">Happy Travelers</span>
             </div>
             <div className="hero-stat">
@@ -249,7 +330,14 @@ export default function Travels() {
               Exquisite itineraries tailored for ultimate luxury and comfort
             </p>
           </div>
-          <button className="btn btn-secondary flex-center gap-2">
+          <button
+            className="btn btn-secondary flex-center gap-2"
+            onClick={() =>
+              openWhatsAppUrl(
+                "Hi Zenith Tours! Could you please share your full catalog of holiday packages?",
+              )
+            }
+          >
             <span>View All Packages</span>
             <ArrowRight size={16} />
           </button>
@@ -283,23 +371,15 @@ export default function Travels() {
                 </div>
                 <h3 className="card-title">{dest.title}</h3>
                 <p className="card-duration">{dest.duration}</p>
-                <p
-                  className="card-highlights"
-                  style={{ fontSize: "12px", color: "#888", marginTop: "8px" }}
-                >
-                  {dest.highlights}
-                </p>
+                <p className="card-highlights">{dest.highlights}</p>
 
                 <button
+                  type="button"
                   className="btn btn-primary card-explore-btn"
-                  onClick={() =>
-                    alert(
-                      `Booking: ${dest.title}\nHighlights: ${dest.highlights}`,
-                    )
-                  }
+                  onClick={() => handlePackageExplore(dest)}
                 >
-                  <span>Explore</span>
-                  <ArrowRight size={16} />
+                  <MessageSquare size={16} />
+                  <span>Inquire on WhatsApp</span>
                 </button>
               </div>
             </div>
